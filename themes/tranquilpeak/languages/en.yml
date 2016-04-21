@@ -54,8 +54,8 @@ post:
     go_to_website: "Go to website"
     comment_and_share: "Comment and share"
 
-author:
+author: 
     # Your biography (Markdown and HTML supported)
-    bio: ""
+    bio: "Master student at CMU"
     # Your job
-    job: ""
+    job: "Software Enginner"

@@ -32,7 +32,7 @@ image_dir: assets/images
 sidebar:
     menu:
         home:
-            title: global.home
+            title: Home
             url: /
             icon: home
         categories:
@@ -111,8 +111,8 @@ header:
 
 # Author
 # Your biography and your job is editable in each languages files in `languages` folder
-author:
-    email:
+author: 
+    email: xin.victoria.hong@gmail.com
     location:
     # Your profile picture located in folder `source/_images/` (development)
     # or in `source/assets/images/` (production)
@@ -174,7 +174,7 @@ google_analytics_id:
 # Your Baidu analystics web property ID : 9505a5af654a2478f93fd6c0ae4f687d
 baidu_analytics_id:
 # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
-gravatar_email:
+gravatar_email: xin.victoria.hong@gmail.com
 # Your swiftype install key
 swiftype_install_key:
 # Your Facebook user ids used to connect your blog with your facebook user accounts (Facebook Insights). Separate ids with comma. e.g : 9830047,1003342
