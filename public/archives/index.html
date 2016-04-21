@@ -194,6 +194,221 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
+                        <a class="link-unstyled" href="/2016/04/Docker/">
+                            Docker
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Thu Apr 21 2016 12:38:04 GMT-0700">
+	
+		    Apr 21, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Tech-Notes/">Tech Notes</a>
+
+
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <hr>
+<h3 id="Basic-Concept"><a href="#Basic-Concept" class="headerlink" title="Basic Concept"></a>Basic Concept</h3><ul>
+<li><p>is a platform for developing , shipping and running applications using container virtualization technology</p>
+</li>
+<li><p>Traditional solution:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app --&gt; OS --&gt; physical sever</span><br></pre></td></tr></table></figure>
+<p>  Problems: slow; cost; waste; scale; migrate; vendor lock in</p>
+</li>
+<li><p>Hypervisor-based Virtualization</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">VM( app --&gt; guest OS )</span><br><span class="line"></span><br><span class="line">VM( app --&gt; guest OS ) --&gt; Hypervisor --&gt; host OS --&gt; physical sever</span><br><span class="line"></span><br><span class="line">VM( app --&gt; guest OS )</span><br></pre></td></tr></table></figure>
+<p>  Benefits: better resource pooling; scale; VMs in cloud</p>
+<p>  Limitations: VMs need resources</p>
+</li>
+<li><p>Container</p>
+<p>  Container based virtualization uses the kernel on the host’s OS to run multiple <strong>guest instances</strong>(container)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">container( app )</span><br><span class="line"></span><br><span class="line">container( app ) --&gt; Host OS( OS Kernel ) --&gt; Physicals server</span><br><span class="line"></span><br><span class="line">container( app )</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Container over VM: lightweight; less resource; portability</p>
+<ul>
+<li><p>Docker</p>
+<pre><code>container( app )
+
+container( app ) --&gt; Docker Engine --&gt; Linux OS( Linux Kernel ) --&gt; Physicals server
+
+container( app )
+</code></pre><p>  <strong>Namespace</strong> is used to support isolated containers</p>
+</li>
+</ul>
+<ul>
+<li><p>Docker Client and Daemon</p>
+<p>  client –&gt; Daemon(server)</p>
+<p>  run on same host/diff hosts</p>
+</li>
+<li><p>Docker Container and Image</p>
+<p>  image</p>
+<ul>
+<li>read only template to create containers</li>
+<li><p>Docker hub or local registry</p>
+<p>Container</p>
+</li>
+<li><p>All resources needed to run the app</p>
+<p>Registry &amp; Repository</p>
+</li>
+<li><p><strong>Docker Hub</strong> is a registry</p>
+</li>
+<li>Registry contains several repos (repo for ubuntu, for redhat)</li>
+<li>Repo contains several images</li>
+</ul>
+</li>
+<li><p>Docker Orchestration</p>
+<p>  Machine/Swarm/Compose</p>
+</li>
+<li><p>Benefits: Separation; Fast deployment cycle; Portability; Scalability</p>
+</li>
+</ul>
+<hr>
+<h3 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h3><ul>
+<li><p>Show images</p>
+<p>  <code>docker image</code></p>
+</li>
+<li><p>Container ID</p>
+<p>  long ID and short ID</p>
+<p>  <code>docker ps</code> list containers</p>
+<p>  <code>docker ps -a</code> list all containers</p>
+</li>
+<li><p>Running options</p>
+<ul>
+<li><p>Running in Detached Mode</p>
+<p>  <code>docker run -d command</code></p>
+</li>
+<li><p>Running a web app inside a container</p>
+<p>  <code>docker run -d -P tomcat:7</code> map the tomcat ports to the host port randomly(49153 ~ 65535)</p>
+<p>  <code>docker run -d -p 8080:80 nginx:1.7</code> map 80 on the container to 9090 on the host</p>
+</li>
+<li><p>attach stdin</p>
+<p>  <code>docker run -i</code></p>
+<ul>
+<li><p>pseudo-tty</p>
+<p>  <code>docker run -t</code> </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Commit<br>  <code>docker commit [options] [container ID] [repo: tag]</code></p>
+<p>  refer to a container by ID or name</p>
+<p>  repo name: username + / + appname</p>
+<p>  default tag: latest</p>
+</li>
+</ul>
+<hr>
+<h3 id="Building-Image"><a href="#Building-Image" class="headerlink" title="Building Image"></a>Building Image</h3><ul>
+<li><p>Image Layers</p>
+<ul>
+<li>a layer is also just another image</li>
+<li>layers are read only</li>
+</ul>
+</li>
+<li><p>Writable Layer</p>
+<p>  all changes are made to the writable layer</p>
+</li>
+<li><p>Dockerfile</p>
+<p>  is a configuration file that contains instructions for building a Docker image</p>
+<p>  instructions can be cached automatically</p>
+<p>  <strong>FROM</strong> base image</p>
+<p>  <code>FROM ubuntu:14.04</code></p>
+<p>  <strong>RUN</strong> specify a command to execute</p>
+<p>  each RUN is a new commit, so we can aggregate multiple RUN instructions</p>
+<p>  <code>RUN apt-get update &amp;&amp; apt-get install vim</code></p>
+<p>  <strong>CMD</strong> defines a default command to execute when a container is created</p>
+<p>  can be specified once in a Dockerfile and can be overridden at runtime</p>
+<p>  shell form: <code>CMD ping 127.0.0.1 -c 30</code></p>
+<p>  exec form: <code>CMD [&quot;ping&quot;, &quot;127.0.0.1&quot;, &quot;-c&quot;, &quot;30&quot;]</code> can pass in parameters at runtime</p>
+<p>  <strong>ENTRYPOINT</strong> can’t be overridden at runtime</p>
+<p>  <code>ENTRYPOINT [&quot;ping&quot;]</code></p>
+<p>  <strong>VOLUME</strong></p>
+<p>  <code>VOLUME /directory</code></p>
+<p>  <code>VOLUME /www/website1.com /www/website2.com</code> multiple volumes</p>
+<p>  can’t map volumes to host directories</p>
+<p>  <strong>EXPOSE</strong> configure which port a container will listen on at runtime</p>
+<p>  <code>EXPOSE 80 443</code></p>
+</li>
+<li><p>Docker Build</p>
+<p>  <code>docker build [options] [path]</code> path is build context(including all resource files)</p>
+<p>  <code>docker build -t [repo:tag] [path]</code></p>
+</li>
+<li><p>Start and Stop Containers</p>
+<p>  <code>docker ps -a</code></p>
+<p>  <code>docker start &lt;container ID or name&gt;</code></p>
+<p>  <code>docker stop &lt;container ID or name&gt;</code></p>
+</li>
+<li><p>Getting terminal access</p>
+<p>  <code>docker exec</code> to start another process within a container</p>
+<p>  <code>docker exec -it [container ID] /bin/bash</code></p>
+<p>  <code>ps -ef</code> to see existing processes in this container</p>
+</li>
+<li><p>Delete Container</p>
+<p>   <code>docker stop</code><br>   <code>docker rm [container ID]</code></p>
+</li>
+<li><p>Delete local images</p>
+<p>  <code>docker rmi [image ID]</code></p>
+<p>  <code>docker rmi [repo:tag]</code></p>
+</li>
+<li><p>Push image to docker hub</p>
+<p>  <code>docker push [repo:tag]</code></p>
+</li>
+</ul>
+<hr>
+<h3 id="Volumes"><a href="#Volumes" class="headerlink" title="Volumes"></a>Volumes</h3><ul>
+<li><p>is a designated directory in a container, which is designed to persist data, independent of the container’s life cycle</p>
+</li>
+<li><p>persist when a container is deleted</p>
+</li>
+<li><p>Mount a Volume</p>
+<p>  <code>docker run -i -t -v /data/src:/test/src nginx:1.7</code></p>
+<p>  execute a new container and map the /data/src  folder from the host into the /test/src folder in the container</p>
+</li>
+</ul>
+<hr>
+<h3 id="Networking-Basics"><a href="#Networking-Basics" class="headerlink" title="Networking Basics"></a>Networking Basics</h3><ul>
+<li><p><strong>EXPOSE</strong></p>
+</li>
+<li><p>Link Containers</p>
+<p>  <code>docker run -d --name database postgres</code> create the source container first</p>
+<p>  <code>docker run -d -p --name website -- link database:db nginx</code> create the recipient container</p>
+<p>  db is alias for database</p>
+</li>
+</ul>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2016/04/Docker/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
                         <a class="link-unstyled" href="/2016/04/hello-world/">
                             Hello World
                         </a>

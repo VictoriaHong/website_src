@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://victoriahong.com/"/>
-  <updated>2016-04-21T05:32:53.000Z</updated>
+  <updated>2016-04-21T21:47:47.000Z</updated>
   <id>http://victoriahong.com/</id>
   
   <author>
@@ -14,6 +14,201 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker</title>
+    <link href="http://victoriahong.com/2016/04/Docker/"/>
+    <id>http://victoriahong.com/2016/04/Docker/</id>
+    <published>2016-04-21T19:38:04.000Z</published>
+    <updated>2016-04-21T21:47:47.000Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;is a platform for developing , shipping and running applications using container virtualization technology&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Traditional solution:&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;app --&amp;gt; OS --&amp;gt; physical sever&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  Problems: slow; cost; waste; scale; migrate; vendor lock in&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hypervisor-based Virtualization&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;VM( app --&amp;gt; guest OS )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;VM( app --&amp;gt; guest OS ) --&amp;gt; Hypervisor --&amp;gt; host OS --&amp;gt; physical sever&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;VM( app --&amp;gt; guest OS )&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  Benefits: better resource pooling; scale; VMs in cloud&lt;/p&gt;
+&lt;p&gt;  Limitations: VMs need resources&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Container&lt;/p&gt;
+&lt;p&gt;  Container based virtualization uses the kernel on the host’s OS to run multiple &lt;strong&gt;guest instances&lt;/strong&gt;(container)&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;container( app )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;container( app ) --&amp;gt; Host OS( OS Kernel ) --&amp;gt; Physicals server&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;container( app )&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Container over VM: lightweight; less resource; portability&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Docker&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;container( app )
+
+container( app ) --&amp;gt; Docker Engine --&amp;gt; Linux OS( Linux Kernel ) --&amp;gt; Physicals server
+
+container( app )
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  &lt;strong&gt;Namespace&lt;/strong&gt; is used to support isolated containers&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Docker Client and Daemon&lt;/p&gt;
+&lt;p&gt;  client –&amp;gt; Daemon(server)&lt;/p&gt;
+&lt;p&gt;  run on same host/diff hosts&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Docker Container and Image&lt;/p&gt;
+&lt;p&gt;  image&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;read only template to create containers&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Docker hub or local registry&lt;/p&gt;
+&lt;p&gt;Container&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;All resources needed to run the app&lt;/p&gt;
+&lt;p&gt;Registry &amp;amp; Repository&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Docker Hub&lt;/strong&gt; is a registry&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Registry contains several repos (repo for ubuntu, for redhat)&lt;/li&gt;
+&lt;li&gt;Repo contains several images&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Docker Orchestration&lt;/p&gt;
+&lt;p&gt;  Machine/Swarm/Compose&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Benefits: Separation; Fast deployment cycle; Portability; Scalability&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;Operations&quot;&gt;&lt;a href=&quot;#Operations&quot; class=&quot;headerlink&quot; title=&quot;Operations&quot;&gt;&lt;/a&gt;Operations&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Show images&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker image&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Container ID&lt;/p&gt;
+&lt;p&gt;  long ID and short ID&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker ps&lt;/code&gt; list containers&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker ps -a&lt;/code&gt; list all containers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Running options&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Running in Detached Mode&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -d command&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Running a web app inside a container&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -d -P tomcat:7&lt;/code&gt; map the tomcat ports to the host port randomly(49153 ~ 65535)&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -d -p 8080:80 nginx:1.7&lt;/code&gt; map 80 on the container to 9090 on the host&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;attach stdin&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -i&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;pseudo-tty&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -t&lt;/code&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Commit&lt;br&gt;  &lt;code&gt;docker commit [options] [container ID] [repo: tag]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  refer to a container by ID or name&lt;/p&gt;
+&lt;p&gt;  repo name: username + / + appname&lt;/p&gt;
+&lt;p&gt;  default tag: latest&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;Building-Image&quot;&gt;&lt;a href=&quot;#Building-Image&quot; class=&quot;headerlink&quot; title=&quot;Building Image&quot;&gt;&lt;/a&gt;Building Image&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Image Layers&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a layer is also just another image&lt;/li&gt;
+&lt;li&gt;layers are read only&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Writable Layer&lt;/p&gt;
+&lt;p&gt;  all changes are made to the writable layer&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Dockerfile&lt;/p&gt;
+&lt;p&gt;  is a configuration file that contains instructions for building a Docker image&lt;/p&gt;
+&lt;p&gt;  instructions can be cached automatically&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;FROM&lt;/strong&gt; base image&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;FROM ubuntu:14.04&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;RUN&lt;/strong&gt; specify a command to execute&lt;/p&gt;
+&lt;p&gt;  each RUN is a new commit, so we can aggregate multiple RUN instructions&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;RUN apt-get update &amp;amp;&amp;amp; apt-get install vim&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;CMD&lt;/strong&gt; defines a default command to execute when a container is created&lt;/p&gt;
+&lt;p&gt;  can be specified once in a Dockerfile and can be overridden at runtime&lt;/p&gt;
+&lt;p&gt;  shell form: &lt;code&gt;CMD ping 127.0.0.1 -c 30&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  exec form: &lt;code&gt;CMD [&amp;quot;ping&amp;quot;, &amp;quot;127.0.0.1&amp;quot;, &amp;quot;-c&amp;quot;, &amp;quot;30&amp;quot;]&lt;/code&gt; can pass in parameters at runtime&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;ENTRYPOINT&lt;/strong&gt; can’t be overridden at runtime&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;ENTRYPOINT [&amp;quot;ping&amp;quot;]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;VOLUME&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;VOLUME /directory&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;VOLUME /www/website1.com /www/website2.com&lt;/code&gt; multiple volumes&lt;/p&gt;
+&lt;p&gt;  can’t map volumes to host directories&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;EXPOSE&lt;/strong&gt; configure which port a container will listen on at runtime&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;EXPOSE 80 443&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Docker Build&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker build [options] [path]&lt;/code&gt; path is build context(including all resource files)&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker build -t [repo:tag] [path]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Start and Stop Containers&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker ps -a&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker start &amp;lt;container ID or name&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker stop &amp;lt;container ID or name&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Getting terminal access&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker exec&lt;/code&gt; to start another process within a container&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker exec -it [container ID] /bin/bash&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;ps -ef&lt;/code&gt; to see existing processes in this container&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Delete Container&lt;/p&gt;
+&lt;p&gt;   &lt;code&gt;docker stop&lt;/code&gt;&lt;br&gt;   &lt;code&gt;docker rm [container ID]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Delete local images&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker rmi [image ID]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker rmi [repo:tag]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Push image to docker hub&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker push [repo:tag]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;Volumes&quot;&gt;&lt;a href=&quot;#Volumes&quot; class=&quot;headerlink&quot; title=&quot;Volumes&quot;&gt;&lt;/a&gt;Volumes&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;is a designated directory in a container, which is designed to persist data, independent of the container’s life cycle&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;persist when a container is deleted&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Mount a Volume&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -i -t -v /data/src:/test/src nginx:1.7&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  execute a new container and map the /data/src  folder from the host into the /test/src folder in the container&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;Networking-Basics&quot;&gt;&lt;a href=&quot;#Networking-Basics&quot; class=&quot;headerlink&quot; title=&quot;Networking Basics&quot;&gt;&lt;/a&gt;Networking Basics&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;EXPOSE&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Link Containers&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -d --name database postgres&lt;/code&gt; create the source container first&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -d -p --name website -- link database:db nginx&lt;/code&gt; create the recipient container&lt;/p&gt;
+&lt;p&gt;  db is alias for database&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;is a platfor
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Docker" scheme="http://victoriahong.com/tags/Docker/"/>
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
