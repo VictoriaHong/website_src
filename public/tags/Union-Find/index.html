@@ -6,25 +6,22 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Victoria&#39;s Blog">
-    <title>Resume - Victoria&#39;s Blog</title>
+    <title>Tag: Union Find - Victoria&#39;s Blog</title>
     <meta name="author" content="Victoria Hong">
     
     
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description">
+    <meta name="description" content="Welcome to Victoria&apos;s personal page.">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Resume">
-<meta property="og:url" content="http://victoriahong.com/about/index.html">
+<meta property="og:title" content="Victoria's Blog">
+<meta property="og:url" content="http://victoriahong.com/tags/Union-Find/index.html">
 <meta property="og:site_name" content="Victoria's Blog">
-<meta property="og:description">
-<meta property="og:image" content="http://i.imgur.com/Ld4ym64.jpg?1">
-<meta property="og:updated_time" content="2016-04-22T07:11:22.000Z">
+<meta property="og:description" content="Welcome to Victoria&apos;s personal page.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Resume">
-<meta name="twitter:description">
-<meta name="twitter:image" content="http://i.imgur.com/Ld4ym64.jpg?1">
+<meta name="twitter:title" content="Victoria's Blog">
+<meta name="twitter:description" content="Welcome to Victoria&apos;s personal page.">
     
     
         
@@ -225,104 +222,125 @@
                         hasCoverMetaIn
                         ">
                 
-<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+
+<section class="postShorten-group main-content-wrap">
     
     
-        <div class="post-header main-content-wrap text-left">
-    
-        <h1 class="post-title" itemprop="headline">
-            Resume
-        </h1>
-    
-    <div class="post-meta">
-    <time itemprop="datePublished" content="Wed Apr 20 2016 21:59:27 GMT-0700">
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2016/04/Algorithms-Part-I-Week-0-1/">
+                            Algorithms Part I - Week 0 &amp; 1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Thu Apr 21 2016 17:45:34 GMT-0700">
 	
-		    Apr 20, 2016
+		    Apr 21, 2016
     	
     </time>
     
-</div>
-</div>
-    
-    <div class="post-content markdown" itemprop="articleBody">
-        <div class="main-content-wrap">
-            <p><img src="http://i.imgur.com/Ld4ym64.jpg?1" alt=""></p>
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Tech-Notes/">Tech Notes</a>
 
+
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <h2 id="Union-Find-amp-Memory-Usage-for-Algorithm"><a href="#Union-Find-amp-Memory-Usage-for-Algorithm" class="headerlink" title="Union-Find &amp; Memory Usage for Algorithm"></a>Union-Find &amp; Memory Usage for Algorithm</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">algorithm</th>
+<th style="text-align:center">initialize</th>
+<th style="text-align:center">union</th>
+<th style="text-align:center">find</th>
+<th style="text-align:center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">quick-find</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">union时loop更新有共同祖先的顶点</td>
+</tr>
+<tr>
+<td style="text-align:center">quick-union</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">union时只需要更新一个顶点的祖先</td>
+</tr>
+<tr>
+<td style="text-align:center">weighted QU</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">lg N</td>
+<td style="text-align:center">lg N</td>
+<td style="text-align:center">加一个size记录，小树总是连在大树上</td>
+</tr>
+</tbody>
+</table>
+<p>M union-find operations on a set of N objects:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">algorithm</th>
+<th style="text-align:center">worst-case time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">quick-find</td>
+<td style="text-align:center">MN</td>
+</tr>
+<tr>
+<td style="text-align:center">quick-union</td>
+<td style="text-align:center">MN</td>
+</tr>
+<tr>
+<td style="text-align:center">weighted QU</td>
+<td style="text-align:center">N + M log N</td>
+</tr>
+<tr>
+<td style="text-align:center">QU + path compression</td>
+<td style="text-align:center">N + M log N</td>
+</tr>
+<tr>
+<td style="text-align:center">Weighted QU + path compression</td>
+<td style="text-align:center">N + M log* N</td>
+</tr>
+</tbody>
+</table>
+                    
+                        <a href="/2016/04/Algorithms-Part-I-Week-0-1/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
+                        
+                    
+                </div>
             
         </div>
-    </div>
-    <div id="post-footer" class="post-footer main-content-wrap">
         
-        <div class="post-actions-wrap">
-    <nav>
-        <ul class="post-actions post-action-nav">
-            <li class="post-action">
-                
-                    <a class="post-action-btn btn btn--disabled">
-                
-                    <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
-            </li>
-            <li class="post-action">
-                
-                    <a class="post-action-btn btn btn--disabled">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="post-actions post-action-share">
-        <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
-                <i class="fa fa-share-alt"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/about/index.html">
-                <i class="fa fa-google-plus"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/about/index.html">
-                <i class="fa fa-facebook-official"></i>
-            </a>
-        </li>
-        <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/about/index.html">
-                <i class="fa fa-twitter"></i>
-            </a>
-        </li>
+    </article>
+    
+    <div class="pagination-bar">
+    <ul class="pagination">
         
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
         
-        <li class="post-action">
-            
-                <a class="post-action-btn btn btn--default" href="#">
-            
-                <i class="fa fa-list"></i>
-            </a>
-        </li>
+        <li class="pagination-number">page 1 of 1</li>
     </ul>
 </div>
 
-
-        
-            
-                <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-            
-        
-    </div>
-</article>
-
+</section>
 
 
                 <footer id="footer" class="main-content-wrap">
@@ -376,25 +394,6 @@
     <!--SCRIPTS-->
 <script src="/assets/js/scrip-rjanlllosg30d03qrddpwrs6wqf4k3v0bbo68hiifuvthyhqfefx2htcagu0.min.js"></script>
 <!--SCRIPTS END-->
-
-    
-        <script>
-             var disqus_config = function () {
-                 this.page.url = 'http://victoriahong.com/about/index.html';
-                 
-                    this.page.identifier = 'about/index.html';
-                                  
-             };
-            (function() {
-                var d = document, s = d.createElement('script');
-                var disqus_shortname = 'victoria-matrix';
-                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-    
 
 
 

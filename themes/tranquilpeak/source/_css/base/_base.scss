@@ -14,7 +14,7 @@ body {
     height:         100%;
     margin:         0;
     padding:        0;
-    background:     white;
+    background:     #000;
     font-family:    $font-family-base;
     font-size:      map-get($font-size, base);
     line-height:    $line-height-base;
@@ -191,4 +191,3 @@ blockquote {
         }
     }
 }
-    

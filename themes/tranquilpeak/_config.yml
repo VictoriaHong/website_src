@@ -55,13 +55,13 @@ sidebar:
             class: st-search-show-outputs
         about:
             title: global.about
-            url: /#about
+            url: /about
             icon: question
     author_links:
-        # github:
-        #     title: global.github
-        #     url: https://github.com/
-        #     icon: github
+        github:
+            title: global.github
+            url: https://github.com/VictoriaHong
+            icon: github
         # stack_overflow:
         #     title: global.stack_overflow
         #     url: http://stackoverflow.com/users
@@ -70,18 +70,18 @@ sidebar:
         #     title: global.twitter
         #     url: https://twitter.com/
         #     icon: twitter
-        # facebook:
-        #     title: global.facebook
-        #     url: https://facebook.com/
-        #     icon: facebook
+        facebook:
+            title: global.facebook
+            url: https://www.facebook.com/XinVictoriaHong
+            icon: facebook
         # google_plus:
         #     title: global.google_plus
         #     url: https://plus.google.com/
         #     icon: google-plus
-        # linked_in:
-        #     title: global.linkedin
-        #     url: https://www.linkedin.com/profile/
-        #     icon: linkedin
+        linked_in:
+            title: global.linkedin
+            url: https://www.linkedin.com/in/xinvictoriahong
+            icon: linkedin
         # mail:
         #     title: global.mail
         #     url: mailto:
@@ -111,9 +111,9 @@ header:
 
 # Author
 # Your biography and your job is editable in each languages files in `languages` folder
-author: 
+author:
     email: xin.victoria.hong@gmail.com
-    location:
+    location: Mountain View, CA
     # Your profile picture located in folder `source/_images/` (development)
     # or in `source/assets/images/` (production)
     # or you can use an external url
@@ -132,7 +132,7 @@ author:
 # 2: Display medium sidebar on large and medium screen and header bar on small screen and medium sidebar is swiped (default)
 # 3: Display header bar on all screens and large sidebar is swiped
 # 4: Display header bar on all screens and medium sidebar is swiped
-sidebar_behavior: 2
+sidebar_behavior: 1
 # Hide sidebar on all article page to let article take full width to improve reading, and enjoy wide images and cover images. (true: enable, false: disable)
 clear_reading: true
 # Display thumbnail image of each post on index pages (false: disabled, true: enabled)
@@ -166,11 +166,11 @@ tag_pagination: true
 # You can't use Disqus and Duoshuo together
 # then fill the right shortname
 # Your Disqus shortname
-disqus_shortname:
+disqus_shortname: victoria-matrix
 # Your Duoshuo shortname
 duoshuo_shortname:
 # Your Google analystics web property ID : UA-XXXXX-X
-google_analytics_id:
+google_analytics_id: UA-76801514-1
 # Your Baidu analystics web property ID : 9505a5af654a2478f93fd6c0ae4f687d
 baidu_analytics_id:
 # Your Gravatar email. Overwrite `author.picture` everywhere in the blog

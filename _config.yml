@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: Victoria Hong 
+title: Victoria's Blog
+subtitle: Way To Success
+description: Welcome to Victoria's personal page.
+author: Victoria Hong
 language: en
 timezone:
 
@@ -30,11 +30,12 @@ skip_render:
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
-titlecase: false # Transform title into titlecase
+auto_spacing: true
+titlecase: true # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
-render_drafts: false
-post_asset_folder: true 
+render_drafts: true
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -47,6 +48,9 @@ highlight:
 default_category: uncategorized
 category_map:
 tag_map:
+archive: 1
+category: 1
+tag: 1
 
 # RSS Feed
 feed:
@@ -69,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: tranquilpeak 
+theme: tranquilpeak
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

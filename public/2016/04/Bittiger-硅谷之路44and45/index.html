@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Victoria&#39;s Blog">
+    <title>Bittiger 硅谷之路 44 &amp; 45 - Victoria&#39;s Blog</title>
+    <meta name="author" content="Victoria Hong">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="OverviewHow to write crawler code and how to improve it step by step.
+Multi-thread concurrency design with mutex and semaphore.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Bittiger 硅谷之路 44 & 45">
+<meta property="og:url" content="http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/index.html">
+<meta property="og:site_name" content="Victoria's Blog">
+<meta property="og:description" content="OverviewHow to write crawler code and how to improve it step by step.
+Multi-thread concurrency design with mutex and semaphore.">
+<meta property="og:updated_time" content="2016-04-29T22:32:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bittiger 硅谷之路 44 & 45">
+<meta name="twitter:description" content="OverviewHow to write crawler code and how to improve it step by step.
+Multi-thread concurrency design with mutex and semaphore.">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-quwccsthbllipo6252snb2tfkddvrsp1eczkytpz3vmxpsb6nwodixemlkux.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-76801514-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Victoria&#39;s Blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Victoria Hong</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categories</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Archives</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Search</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Resume</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/VictoriaHong" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.facebook.com/XinVictoriaHong" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+                    <span class="sidebar-button-desc">Facebook</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/xinvictoriahong" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Bittiger 硅谷之路 44 &amp; 45
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Fri Apr 29 2016 15:22:17 GMT-0700">
+	
+		    Apr 29, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Tech-Notes/">Tech Notes</a>
+
+
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>How to write crawler code and how to improve it step by step.</p>
+<p>Multi-thread concurrency design with mutex and semaphore.</p>
+<a id="more"></a>
+<h3 id="Crawler"><a href="#Crawler" class="headerlink" title="Crawler"></a>Crawler</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import urllib2</span><br><span class="line">url=&apos;http://yue.ifeng.com/a/20150717/39747647_0.shtml&apos;</span><br><span class="line">request = urllib2.Request(url)</span><br><span class="line">response = urllib2.urlopen(request)</span><br><span class="line">page = response.read()</span><br><span class="line">webFile = open(&apos;webPage.html&apos;,&apos;wb&apos;)</span><br><span class="line">webFile.write(page)</span><br><span class="line">webFile.close()</span><br></pre></td></tr></table></figure>
+<h3 id="Q1-What-is-the-network-process-after-crawl-a-web-page"><a href="#Q1-What-is-the-network-process-after-crawl-a-web-page" class="headerlink" title="Q1: What is the network process after crawl a web page?"></a>Q1: What is the network process after crawl a web page?</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">Step</th>
+<th style="text-align:center">Crawler</th>
+<th style="text-align:center">Web Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">socket()</td>
+<td style="text-align:center">socket()</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">bind()</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">listen()</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">connect()</td>
+<td style="text-align:center">accept()</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">read() &amp; write()</td>
+<td style="text-align:center">read() &amp; write()</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">close()</td>
+<td style="text-align:center">close()</td>
+</tr>
+</tbody>
+</table>
+<p>TCP 3-way handshake: SYN, SYN-ACK, ACK</p>
+<ul>
+<li><p>Layers</p>
+<p>  Application layer <code>FTP HTTP DNS</code></p>
+<p>  Abstract layer <code>Socket</code></p>
+<p>  Transportation layer <code>TCP UDP</code></p>
+<p>  Network layer <code>IP</code></p>
+<p>  Link layer <code>Hardware interface</code></p>
+<p>  <a href="http://coolshell.cn/articles/11564.html" target="_blank" rel="external">Reference</a></p>
+</li>
+</ul>
+<h3 id="Q2-What-is-HTML"><a href="#Q2-What-is-HTML" class="headerlink" title="Q2: What is HTML"></a>Q2: What is HTML</h3><p>Tree structure</p>
+<h3 id="Q3-crawl-all-the-news-from-a-website"><a href="#Q3-crawl-all-the-news-from-a-website" class="headerlink" title="Q3: crawl all the news from a website"></a>Q3: crawl all the news from a website</h3><ul>
+<li>identify a list page</li>
+<li>identify the links with and find a pattern</li>
+<li>find all with regex</li>
+</ul>
+<p><strong>Architecture v1</strong></p>
+<p>list crawler –&gt; links of news –&gt; news crawler –&gt; pages of news</p>
+<h3 id="Q4-crawl-form-other-websites"><a href="#Q4-crawl-form-other-websites" class="headerlink" title="Q4: crawl form other websites"></a>Q4: crawl form other websites</h3><p><strong>Architecture v2</strong></p>
+<p>design a crawler for each website(list and page)</p>
+<p><strong>Architecture v3</strong></p>
+<p>same crawler for all websites</p>
+<p>scheduler has a <strong>taskTable</strong>: id, priority(0,1), type(list, page), state(new, done, working), link, availableTime, endTime</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">while(true)</span><br><span class="line">  lock(taskTable)</span><br><span class="line">  while taskTable.find(&quot;state=new&quot;) == null</span><br><span class="line">    Release(taskTable)</span><br><span class="line">    Sleep(1s)</span><br><span class="line">    lock(taskTable)</span><br><span class="line"></span><br><span class="line">  task = taskTable.findOne(&quot;state=new&quot;)</span><br><span class="line">  task.state = &quot;working&quot;</span><br><span class="line">  Release(taskTable)</span><br><span class="line"></span><br><span class="line">  page = Crawl(task.url)</span><br><span class="line"></span><br><span class="line">  if task.type == &quot;list&quot;</span><br><span class="line">    lock(taskTable)</span><br><span class="line">    For newTask in page:</span><br><span class="line">      taskTable.Add(newTask)</span><br><span class="line">    task.state = &quot;done&quot;</span><br><span class="line">    Release(taskTable)</span><br><span class="line">  Else</span><br><span class="line">    lock(pageTable)</span><br><span class="line">    pageTable.Add(page)</span><br><span class="line">    Release(pageTable)</span><br><span class="line">    lock(taskTable)</span><br><span class="line">    task.state = &quot;done&quot;</span><br><span class="line">    Release(taskTable)</span><br></pre></td></tr></table></figure>
+<h3 id="Q5-design-scheduler-with-conditional-variable"><a href="#Q5-design-scheduler-with-conditional-variable" class="headerlink" title="Q5: design scheduler with conditional variable"></a>Q5: design scheduler with conditional variable</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">while(true)</span><br><span class="line">  lock(taskTable)</span><br><span class="line">  while taskTable.find(&quot;state=new&quot;) == null</span><br><span class="line">    Cond_Wait(cond, taskTable)</span><br><span class="line">  task = taskTable.findOne(&quot;state=new&quot;)</span><br><span class="line">  task.state = &quot;working&quot;</span><br><span class="line">  Release(taskTable)</span><br><span class="line"></span><br><span class="line">  page = Crawl(task.url)</span><br><span class="line"></span><br><span class="line">  if task.type == &quot;list&quot;</span><br><span class="line">    lock(taskTable)</span><br><span class="line">    For newTask in page:</span><br><span class="line">      taskTable.Add(newTask)</span><br><span class="line">      Cond_Signal(cond)</span><br><span class="line">    task.state = &quot;done&quot;</span><br><span class="line">    Release(taskTable)</span><br><span class="line">  Else</span><br><span class="line">    lock(pageTable)</span><br><span class="line">    pageTable.Add(page)</span><br><span class="line">    Release(pageTable)</span><br><span class="line">    lock(taskTable)</span><br><span class="line">    task.state = &quot;done&quot;</span><br><span class="line">    Release(taskTable)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Cond_Wait(cond, mutex)</span><br><span class="line">  Lock(cond.threadWaitList)</span><br><span class="line">  cond.threadWaitList.Add(this.thread)</span><br><span class="line">  Release(cond.threadWaitList)</span><br><span class="line"></span><br><span class="line">  Release(mutex)</span><br><span class="line">  Block(this.thread)</span><br><span class="line">  Lock(mutex)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Cond_Signal(cond)</span><br><span class="line">  Lock(cond.threadWaitList)</span><br><span class="line">  if cond.threadWaitList.size &gt; 0</span><br><span class="line">    thread = cond.threadWaitList.Pop()</span><br><span class="line">    Wakeup(thread)</span><br><span class="line">   Release(cond.threadWaitList)</span><br></pre></td></tr></table></figure>
+<h3 id="Q6-design-scheduler-with-semaphore"><a href="#Q6-design-scheduler-with-semaphore" class="headerlink" title="Q6: design scheduler with semaphore"></a>Q6: design scheduler with semaphore</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">while(true)</span><br><span class="line">  Wait(numberOfNewTask)</span><br><span class="line">  Lock(taskTable)</span><br><span class="line">  task = taskTable.findOne(&quot;state=new&quot;)</span><br><span class="line">  task.state = &quot;working&quot;</span><br><span class="line">  Release(taskTable)</span><br><span class="line"></span><br><span class="line">  page = Crawl(task.url)</span><br><span class="line"></span><br><span class="line">  if task.type == &quot;list&quot;</span><br><span class="line">    lock(taskTable)</span><br><span class="line">    For newTask in page:</span><br><span class="line">      taskTable.Add(newTask)</span><br><span class="line">      Signal(numberOfNewTask)</span><br><span class="line">    task.state = &quot;done&quot;</span><br><span class="line">    Release(taskTable)</span><br><span class="line">  Else</span><br><span class="line">    lock(pageTable)</span><br><span class="line">    pageTable.Add(page)</span><br><span class="line">    Release(pageTable)</span><br><span class="line">    lock(taskTable)</span><br><span class="line">    task.state = &quot;done&quot;</span><br><span class="line">    Release(taskTable)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Wait(semaphore)</span><br><span class="line">  Lock(semaphore)</span><br><span class="line">  semaphore.val--</span><br><span class="line">  if semaphore.val &lt; 0</span><br><span class="line">    semaphore.processWaitList.Add(this.process)</span><br><span class="line">    Release(semaphore)</span><br><span class="line">    Block(this.process)</span><br><span class="line">  Else</span><br><span class="line">    Release(semaphore)</span><br><span class="line"></span><br><span class="line">Signal(semaphore)</span><br><span class="line">  Lock(semaphore)</span><br><span class="line">  semaphore.val++</span><br><span class="line">  if semaphore.val &lt;= 0</span><br><span class="line">    process = semaphore.processWaitList.Pop()</span><br><span class="line">    Wakeup(process)</span><br><span class="line">  Release(semaphore)</span><br></pre></td></tr></table></figure>
+<h3 id="Q7-Design-fastest-consumer-and-producer"><a href="#Q7-Design-fastest-consumer-and-producer" class="headerlink" title="Q7: Design fastest consumer and producer"></a>Q7: Design fastest consumer and producer</h3><p>Fill in later.</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Bittiger/">Bittiger</a> <a class="tag tag--primary tag--small t-link" href="/tags/Crawler/">Crawler</a> <a class="tag tag--primary tag--small t-link" href="/tags/Notes/">Notes</a> <a class="tag tag--primary tag--small t-link" href="/tags/concurrency/">concurrency</a> <a class="tag tag--primary tag--small t-link" href="/tags/硅谷之路/">硅谷之路</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/Algorithms-Part-I-Week-0-1/" data-tooltip="Algorithms Part I - Week 0 &amp; 1">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Victoria Hong. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/Algorithms-Part-I-Week-0-1/" data-tooltip="Algorithms Part I - Week 0 &amp; 1">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
+        
+            <h4 id="about-card-name">Victoria Hong</h4>
+        
+            <h5 id="about-card-bio"><p>Master student at CMU<br> Foodie &amp; Programmer &amp; Fashionista<br> Looking for full-time position @Bay area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Engineer</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Mountain View, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-rjanlllosg30d03qrddpwrs6wqf4k3v0bbo68hiifuvthyhqfefx2htcagu0.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/';
+                 
+                    this.page.identifier = '2016/04/Bittiger-硅谷之路44and45/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'victoria-matrix';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>

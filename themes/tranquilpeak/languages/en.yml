@@ -9,7 +9,7 @@ global:
     tag: "Tag"
     archives: "Archives"
     search: "Search"
-    about: "About"
+    about: "Resume"
     github: "GitHub"
     stack_overflow: "Stack Overflow"
     twitter: "Twitter"
@@ -54,8 +54,8 @@ post:
     go_to_website: "Go to website"
     comment_and_share: "Comment and share"
 
-author: 
+author:
     # Your biography (Markdown and HTML supported)
-    bio: "Master student at CMU"
+    bio: "Master student at CMU \n Foodie & Programmer & Fashionista \n Looking for full-time position @Bay area"
     # Your job
-    job: "Software Enginner"
+    job: "Software Engineer"

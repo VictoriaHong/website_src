@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
-  
+  <title>Victoria&#39;s Blog</title>
+  <subtitle>Way To Success</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://victoriahong.com/"/>
-  <updated>2016-04-21T21:47:47.000Z</updated>
+  <updated>2016-04-29T22:32:11.000Z</updated>
   <id>http://victoriahong.com/</id>
   
   <author>
@@ -16,14 +16,408 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Bittiger 硅谷之路 44 &amp; 45</title>
+    <link href="http://victoriahong.com/2016/04/Bittiger-%E7%A1%85%E8%B0%B7%E4%B9%8B%E8%B7%AF44and45/"/>
+    <id>http://victoriahong.com/2016/04/Bittiger-硅谷之路44and45/</id>
+    <published>2016-04-29T22:22:17.000Z</published>
+    <updated>2016-04-29T22:32:11.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;&lt;p&gt;How to write crawler code and how to improve it step by step.&lt;/p&gt;
+&lt;p&gt;Multi-thread concurrency design with mutex and semaphore.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Crawler&quot;&gt;&lt;a href=&quot;#Crawler&quot; class=&quot;headerlink&quot; title=&quot;Crawler&quot;&gt;&lt;/a&gt;Crawler&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import urllib2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;url=&amp;apos;http://yue.ifeng.com/a/20150717/39747647_0.shtml&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;request = urllib2.Request(url)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;response = urllib2.urlopen(request)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;page = response.read()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;webFile = open(&amp;apos;webPage.html&amp;apos;,&amp;apos;wb&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;webFile.write(page)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;webFile.close()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Q1-What-is-the-network-process-after-crawl-a-web-page&quot;&gt;&lt;a href=&quot;#Q1-What-is-the-network-process-after-crawl-a-web-page&quot; class=&quot;headerlink&quot; title=&quot;Q1: What is the network process after crawl a web page?&quot;&gt;&lt;/a&gt;Q1: What is the network process after crawl a web page?&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Step&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Crawler&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Web Server&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;0&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;socket()&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;socket()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;bind()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;listen()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;connect()&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;accept()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;2&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;read() &amp;amp; write()&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;read() &amp;amp; write()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;3&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;close()&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;close()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;TCP 3-way handshake: SYN, SYN-ACK, ACK&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Layers&lt;/p&gt;
+&lt;p&gt;  Application layer &lt;code&gt;FTP HTTP DNS&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Abstract layer &lt;code&gt;Socket&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Transportation layer &lt;code&gt;TCP UDP&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Network layer &lt;code&gt;IP&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Link layer &lt;code&gt;Hardware interface&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;a href=&quot;http://coolshell.cn/articles/11564.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Reference&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Q2-What-is-HTML&quot;&gt;&lt;a href=&quot;#Q2-What-is-HTML&quot; class=&quot;headerlink&quot; title=&quot;Q2: What is HTML&quot;&gt;&lt;/a&gt;Q2: What is HTML&lt;/h3&gt;&lt;p&gt;Tree structure&lt;/p&gt;
+&lt;h3 id=&quot;Q3-crawl-all-the-news-from-a-website&quot;&gt;&lt;a href=&quot;#Q3-crawl-all-the-news-from-a-website&quot; class=&quot;headerlink&quot; title=&quot;Q3: crawl all the news from a website&quot;&gt;&lt;/a&gt;Q3: crawl all the news from a website&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;identify a list page&lt;/li&gt;
+&lt;li&gt;identify the links with and find a pattern&lt;/li&gt;
+&lt;li&gt;find all with regex&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Architecture v1&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;list crawler –&amp;gt; links of news –&amp;gt; news crawler –&amp;gt; pages of news&lt;/p&gt;
+&lt;h3 id=&quot;Q4-crawl-form-other-websites&quot;&gt;&lt;a href=&quot;#Q4-crawl-form-other-websites&quot; class=&quot;headerlink&quot; title=&quot;Q4: crawl form other websites&quot;&gt;&lt;/a&gt;Q4: crawl form other websites&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Architecture v2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;design a crawler for each website(list and page)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Architecture v3&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;same crawler for all websites&lt;/p&gt;
+&lt;p&gt;scheduler has a &lt;strong&gt;taskTable&lt;/strong&gt;: id, priority(0,1), type(list, page), state(new, done, working), link, availableTime, endTime&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;while(true)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  while taskTable.find(&amp;quot;state=new&amp;quot;) == null&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Sleep(1s)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  task = taskTable.findOne(&amp;quot;state=new&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  task.state = &amp;quot;working&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  page = Crawl(task.url)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  if task.type == &amp;quot;list&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    For newTask in page:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      taskTable.Add(newTask)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task.state = &amp;quot;done&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Else&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(pageTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    pageTable.Add(page)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(pageTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task.state = &amp;quot;done&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Q5-design-scheduler-with-conditional-variable&quot;&gt;&lt;a href=&quot;#Q5-design-scheduler-with-conditional-variable&quot; class=&quot;headerlink&quot; title=&quot;Q5: design scheduler with conditional variable&quot;&gt;&lt;/a&gt;Q5: design scheduler with conditional variable&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;while(true)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  while taskTable.find(&amp;quot;state=new&amp;quot;) == null&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Cond_Wait(cond, taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  task = taskTable.findOne(&amp;quot;state=new&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  task.state = &amp;quot;working&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  page = Crawl(task.url)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  if task.type == &amp;quot;list&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    For newTask in page:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      taskTable.Add(newTask)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      Cond_Signal(cond)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task.state = &amp;quot;done&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Else&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(pageTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    pageTable.Add(page)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(pageTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task.state = &amp;quot;done&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Cond_Wait(cond, mutex)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Lock(cond.threadWaitList)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  cond.threadWaitList.Add(this.thread)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Release(cond.threadWaitList)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Release(mutex)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Block(this.thread)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Lock(mutex)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Cond_Signal(cond)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Lock(cond.threadWaitList)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  if cond.threadWaitList.size &amp;gt; 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    thread = cond.threadWaitList.Pop()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Wakeup(thread)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   Release(cond.threadWaitList)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Q6-design-scheduler-with-semaphore&quot;&gt;&lt;a href=&quot;#Q6-design-scheduler-with-semaphore&quot; class=&quot;headerlink&quot; title=&quot;Q6: design scheduler with semaphore&quot;&gt;&lt;/a&gt;Q6: design scheduler with semaphore&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;while(true)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Wait(numberOfNewTask)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  task = taskTable.findOne(&amp;quot;state=new&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  task.state = &amp;quot;working&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  page = Crawl(task.url)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  if task.type == &amp;quot;list&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    For newTask in page:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      taskTable.Add(newTask)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      Signal(numberOfNewTask)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task.state = &amp;quot;done&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Else&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(pageTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    pageTable.Add(page)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(pageTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    lock(taskTable)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    task.state = &amp;quot;done&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(taskTable)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Wait(semaphore)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Lock(semaphore)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  semaphore.val--&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  if semaphore.val &amp;lt; 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    semaphore.processWaitList.Add(this.process)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(semaphore)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Block(this.process)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Else&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Release(semaphore)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Signal(semaphore)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Lock(semaphore)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  semaphore.val++&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  if semaphore.val &amp;lt;= 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    process = semaphore.processWaitList.Pop()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Wakeup(process)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Release(semaphore)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Q7-Design-fastest-consumer-and-producer&quot;&gt;&lt;a href=&quot;#Q7-Design-fastest-consumer-and-producer&quot; class=&quot;headerlink&quot; title=&quot;Q7: Design fastest consumer and producer&quot;&gt;&lt;/a&gt;Q7: Design fastest consumer and producer&lt;/h3&gt;&lt;p&gt;Fill in later.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;&lt;p&gt;How to write crawler code and how to improve it step by step.&lt;/p&gt;
+&lt;p&gt;Multi-thread concurrency design with mutex and semaphore.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+      <category term="Bittiger" scheme="http://victoriahong.com/tags/Bittiger/"/>
+    
+      <category term="硅谷之路" scheme="http://victoriahong.com/tags/%E7%A1%85%E8%B0%B7%E4%B9%8B%E8%B7%AF/"/>
+    
+      <category term="Crawler" scheme="http://victoriahong.com/tags/Crawler/"/>
+    
+      <category term="concurrency" scheme="http://victoriahong.com/tags/concurrency/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Algorithms Part I - Week 0 &amp; 1</title>
+    <link href="http://victoriahong.com/2016/04/Algorithms-Part-I-Week-0-1/"/>
+    <id>http://victoriahong.com/2016/04/Algorithms-Part-I-Week-0-1/</id>
+    <published>2016-04-22T00:45:34.000Z</published>
+    <updated>2016-04-22T06:25:53.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Union-Find-amp-Memory-Usage-for-Algorithm&quot;&gt;&lt;a href=&quot;#Union-Find-amp-Memory-Usage-for-Algorithm&quot; class=&quot;headerlink&quot; title=&quot;Union-Find &amp;amp; Memory Usage for Algorithm&quot;&gt;&lt;/a&gt;Union-Find &amp;amp; Memory Usage for Algorithm&lt;/h2&gt;&lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;algorithm&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;initialize&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;union&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;find&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;quick-find&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;union时loop更新有共同祖先的顶点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;quick-union&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;union时只需要更新一个顶点的祖先&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;weighted QU&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;lg N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;lg N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;加一个size记录，小树总是连在大树上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;M union-find operations on a set of N objects:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;algorithm&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;worst-case time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;quick-find&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;MN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;quick-union&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;MN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;weighted QU&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N + M log N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;QU + path compression&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N + M log N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Weighted QU + path compression&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N + M log* N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Dynamic-Connectivity&quot;&gt;&lt;a href=&quot;#Dynamic-Connectivity&quot; class=&quot;headerlink&quot; title=&quot;Dynamic Connectivity&quot;&gt;&lt;/a&gt;Dynamic Connectivity&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Connected components&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Quick find / eager approach&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;data structure&lt;/p&gt;
+&lt;p&gt; int[] id = new int[]&lt;br&gt; p and q are connected iff they have the same id&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;find: check is p and q have the same id&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;union: merger components containing p and q&lt;/p&gt;
+&lt;p&gt; (id[i] == id[p] –&amp;gt; id[q])&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class QF&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	private int[] id;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public QF(int N)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		id = new int[N];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		for (int i = 0; i &amp;lt; N; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			id[i] = i; // initialize, cost: N&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public boolean connected(int p, int q)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return id[p] == id[q]; // cost: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void union(int p, int q) // too expensive, cost: N&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		int pid = id[p];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		int qid = id[q];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		for (int i = 0; i &amp;lt; id.length; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			if (id[i] == pid) id[i] = qid;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;quick-find is too slow for huge problem !&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;too flat so union is expensive !&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Quick union / lazy approach&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;data structure&lt;/p&gt;
+&lt;p&gt; int[] id = new int[]&lt;br&gt; id[i] stores the parent of i&lt;br&gt; root of i is id[id[id[…id[i]…]]]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;find: check if p and q have the same root –&amp;gt; in the same union&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;union: set the id of p’s root to the id of q’s root&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class QU&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	private int[] id;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public QU(int N)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		id = new int[N];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		for (int i = 0; i &amp;lt; N; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			id[i] = i; // initialize, cost: N&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public int root(int i)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		while (i != id[i])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			i = id[i]; // cost: depth of i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public boolean connected(int p, int q)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return root(p) == root(q); // cost: depth of p + depth of q&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void union(int p, int q)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		int i = root(p); // cost: depth of p&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		int j = root(q); // cost: depth of q&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		id[i] = j;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;too tall so find is expensive !&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Improve Quick-Union&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;weighting to avoid tall trees : put smaller tree lower&lt;/p&gt;
+&lt;p&gt; add a size array&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   public void union(int p, int q)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	int i = root(p); // cost: depth of p&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	int j = root(q); // cost: depth of q&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if (i == j) return;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if (size[i] &amp;lt; size[j])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		id[i] = j;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		size[j] += size[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	else&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		id[j] = i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		size[i] += size[j];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; union takes constant time, given roots. (log N)&lt;/p&gt;
+&lt;p&gt; depth of any node is at most log N.&lt;/p&gt;
+&lt;p&gt; find cost log N.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;path compression&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Two - pass: After computing root of p, set id of each examined node to point to that root.&lt;/p&gt;
+&lt;p&gt;One - pass: Make every other node in the path pointed to its &lt;strong&gt;grandparent&lt;/strong&gt;.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public int root(int i)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		while (i != id[i])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			id[i] = id[id[i]];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			i = id[i]; // cost: depth of i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Memory-Usage&quot;&gt;&lt;a href=&quot;#Memory-Usage&quot; class=&quot;headerlink&quot; title=&quot;Memory Usage&quot;&gt;&lt;/a&gt;Memory Usage&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;type&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;bytes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;boolean&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;byte&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;char&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;int&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;float&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;long&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;double&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;type&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;bytes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;chat[]&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;2N + 24&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;int[]&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;4N + 24&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;double&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;8N + 24&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;type&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;bytes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Object Overhead&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Reference&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;padding&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;8x&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Union-Find-amp-Memory-Usage-for-Algorithm&quot;&gt;&lt;a href=&quot;#Union-Find-amp-Memory-Usage-for-Algorithm&quot; class=&quot;headerlink&quot; title=&quot;Union-Find &amp;amp; Memory Usage for Algorithm&quot;&gt;&lt;/a&gt;Union-Find &amp;amp; Memory Usage for Algorithm&lt;/h2&gt;&lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;algorithm&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;initialize&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;union&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;find&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;quick-find&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;union时loop更新有共同祖先的顶点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;quick-union&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;union时只需要更新一个顶点的祖先&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;weighted QU&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;lg N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;lg N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;加一个size记录，小树总是连在大树上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;M union-find operations on a set of N objects:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;algorithm&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;worst-case time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;quick-find&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;MN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;quick-union&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;MN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;weighted QU&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N + M log N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;QU + path compression&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N + M log N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Weighted QU + path compression&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N + M log* N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+      <category term="Algorithms" scheme="http://victoriahong.com/tags/Algorithms/"/>
+    
+      <category term="Union Find" scheme="http://victoriahong.com/tags/Union-Find/"/>
+    
+      <category term="Memory" scheme="http://victoriahong.com/tags/Memory/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker</title>
     <link href="http://victoriahong.com/2016/04/Docker/"/>
     <id>http://victoriahong.com/2016/04/Docker/</id>
     <published>2016-04-21T19:38:04.000Z</published>
-    <updated>2016-04-21T21:47:47.000Z</updated>
+    <updated>2016-04-22T05:41:00.000Z</updated>
     
-    <content type="html">&lt;hr&gt;
-&lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
+    <content type="html">&lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;is a platform for developing , shipping and running applications using container virtualization technology&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Traditional solution:&lt;/p&gt;
@@ -43,12 +437,8 @@
 &lt;p&gt;Container over VM: lightweight; less resource; portability&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Docker&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;container( app )
-
-container( app ) --&amp;gt; Docker Engine --&amp;gt; Linux OS( Linux Kernel ) --&amp;gt; Physicals server
-
-container( app )
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  &lt;strong&gt;Namespace&lt;/strong&gt; is used to support isolated containers&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;container( app )&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;container( app ) --&amp;gt; Docker Engine --&amp;gt; Linux OS( Linux Kernel ) --&amp;gt; Physicals server&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;container( app )&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  &lt;strong&gt;Namespace&lt;/strong&gt; is used to support isolated containers&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;ul&gt;
@@ -78,7 +468,6 @@ container( app )
 &lt;li&gt;&lt;p&gt;Benefits: Separation; Fast deployment cycle; Portability; Scalability&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
 &lt;h3 id=&quot;Operations&quot;&gt;&lt;a href=&quot;#Operations&quot; class=&quot;headerlink&quot; title=&quot;Operations&quot;&gt;&lt;/a&gt;Operations&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Show images&lt;/p&gt;
 &lt;p&gt;  &lt;code&gt;docker image&lt;/code&gt;&lt;/p&gt;
@@ -101,7 +490,7 @@ container( app )
 &lt;p&gt;  &lt;code&gt;docker run -i&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;pseudo-tty&lt;/p&gt;
-&lt;p&gt;  &lt;code&gt;docker run -t&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;docker run -t&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -113,7 +502,6 @@ container( app )
 &lt;p&gt;  default tag: latest&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
 &lt;h3 id=&quot;Building-Image&quot;&gt;&lt;a href=&quot;#Building-Image&quot; class=&quot;headerlink&quot; title=&quot;Building Image&quot;&gt;&lt;/a&gt;Building Image&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Image Layers&lt;/p&gt;
 &lt;ul&gt;
@@ -170,7 +558,6 @@ container( app )
 &lt;p&gt;  &lt;code&gt;docker push [repo:tag]&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
 &lt;h3 id=&quot;Volumes&quot;&gt;&lt;a href=&quot;#Volumes&quot; class=&quot;headerlink&quot; title=&quot;Volumes&quot;&gt;&lt;/a&gt;Volumes&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;is a designated directory in a container, which is designed to persist data, independent of the container’s life cycle&lt;/p&gt;
 &lt;/li&gt;
@@ -181,7 +568,6 @@ container( app )
 &lt;p&gt;  execute a new container and map the /data/src  folder from the host into the /test/src folder in the container&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
 &lt;h3 id=&quot;Networking-Basics&quot;&gt;&lt;a href=&quot;#Networking-Basics&quot; class=&quot;headerlink&quot; title=&quot;Networking Basics&quot;&gt;&lt;/a&gt;Networking Basics&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;EXPOSE&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -195,45 +581,17 @@ container( app )
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;is a platfor
+      &lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;is a platform for
     
     </summary>
     
       <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
     
     
-      <category term="Docker" scheme="http://victoriahong.com/tags/Docker/"/>
-    
       <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://victoriahong.com/2016/04/hello-world/"/>
-    <id>http://victoriahong.com/2016/04/hello-world/</id>
-    <published>2016-04-21T05:32:53.000Z</published>
-    <updated>2016-04-21T05:32:53.000Z</updated>
-    
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
+      <category term="Docker" scheme="http://victoriahong.com/tags/Docker/"/>
     
   </entry>
   
