@@ -1,0 +1,601 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Victoria&#39;s Blog">
+    <title>Git Command Cheatsheet - Victoria&#39;s Blog</title>
+    <meta name="author" content="Victoria Hong">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="My A to ZHelp yourself with these cookies.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Git Command Cheatsheet">
+<meta property="og:url" content="http://victoriahong.com/2016/05/GitCommandCheatsheet/index.html">
+<meta property="og:site_name" content="Victoria's Blog">
+<meta property="og:description" content="My A to ZHelp yourself with these cookies.">
+<meta property="og:image" content="http://i.imgur.com/HeNywjX.png">
+<meta property="og:image" content="http://i.imgur.com/Cmu9UdI.png">
+<meta property="og:image" content="http://i.imgur.com/7nCIfHw.png">
+<meta property="og:image" content="http://i.imgur.com/KDFUWgL.png">
+<meta property="og:image" content="http://i.imgur.com/SRF66QK.png">
+<meta property="og:image" content="http://i.imgur.com/ura6v9g.png">
+<meta property="og:image" content="http://i.imgur.com/ynxS8Ap.png">
+<meta property="og:updated_time" content="2016-05-03T01:42:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git Command Cheatsheet">
+<meta name="twitter:description" content="My A to ZHelp yourself with these cookies.">
+<meta name="twitter:image" content="http://i.imgur.com/HeNywjX.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-quwccsthbllipo6252snb2tfkddvrsp1eczkytpz3vmxpsb6nwodixemlkux.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-76801514-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Victoria&#39;s Blog</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Victoria Hong</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categories</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Archives</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link st-search-show-outputs"
+                         href="#search"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                    <span class="sidebar-button-desc">Search</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">Resume</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/VictoriaHong" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.facebook.com/XinVictoriaHong" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+                    <span class="sidebar-button-desc">Facebook</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/xinvictoriahong" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Git Command Cheatsheet
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Mon May 02 2016 18:38:41 GMT-0700">
+	
+		    May 02, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Tech-Notes/">Tech Notes</a>
+
+
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h2 id="My-A-to-Z"><a href="#My-A-to-Z" class="headerlink" title="My A to Z"></a>My A to Z</h2><p>Help yourself with these cookies.</p>
+<a id="more"></a> 
+<h3 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h3><p><strong>HEAD</strong> is the symbolic name for the currently checked out commit – it’s essentially what commit you’re working on top of.</p>
+<p><code>git check branch_name</code> will sync HEAD with latest branch. Check out a commit will attach HEAD to that commit.</p>
+<h3 id="Commit"><a href="#Commit" class="headerlink" title="Commit"></a>Commit</h3><ul>
+<li><p><code>git checkout origin master &amp;&amp; git commit</code></p>
+<p>  <img src="http://i.imgur.com/HeNywjX.png" alt=""></p>
+</li>
+</ul>
+<h3 id="Reverse-Changes"><a href="#Reverse-Changes" class="headerlink" title="Reverse Changes"></a>Reverse Changes</h3><ul>
+<li><p><code>git reset HEAD~1</code></p>
+<p>  Reset local current commit to 1 step before HEAD.</p>
+</li>
+<li><p><code>git revert HEAD~1</code></p>
+<p>  Revert remote pushed commit to 1 step before HEAD.</p>
+</li>
+<li><p><code>git fetch &amp;&amp; git rebase origin master &amp;&amp; git push</code></p>
+<p>  <code>git pull --rebase</code> is short for <code>git fetch &amp;&amp; git rebase</code></p>
+</li>
+</ul>
+<p><img src="http://i.imgur.com/Cmu9UdI.png" alt=""></p>
+<h3 id="Branch"><a href="#Branch" class="headerlink" title="Branch"></a>Branch</h3><ul>
+<li><p><code>git checkout -b new_branch</code></p>
+<p>  Create a new branch and check out.</p>
+</li>
+<li><p><code>git branch -d my_branch</code></p>
+<p>  Delete a new branch.</p>
+</li>
+<li><p><code>git checkout my_branch</code></p>
+<p>  Before checking out to another branch, commit or revert changes. You branch becomes visible only if you push it to origin branch.</p>
+</li>
+<li><p><code>git reset --hard HEAD</code></p>
+<p>  Discard all uncommitted changes at local repo.</p>
+</li>
+<li><p><code>git fetch origin</code></p>
+<p>  <code>git reset --hard origin master</code></p>
+<p>  Discard all committed changes at local repo.</p>
+</li>
+<li><p><code>git merge my_branch</code></p>
+<p>  Check out master branch and then merge your own branch to master.</p>
+</li>
+<li><p><code>git add &lt;filename&gt;</code></p>
+<p>  After solving all conflicts, mark as merged.</p>
+</li>
+<li><p><code>git checkout branch_name^</code></p>
+<p>  Caret(^) is relative ref to parent. ^^ is to grandparent. Alternative to hash.</p>
+</li>
+<li><p><code>git checkout HEAD~4</code></p>
+<p>  Equivalent to HEAD^^^^.</p>
+</li>
+<li><p><code>git branch -f master HEAD~3</code></p>
+<p>  Moves (by force) the master branch to three parents behind HEAD.</p>
+</li>
+</ul>
+<h3 id="Fetch-Data"><a href="#Fetch-Data" class="headerlink" title="Fetch Data"></a>Fetch Data</h3><ul>
+<li><p><code>git fetch</code></p>
+<p>  Downloads the commits that the remote has but are missing from our local repository, and updates where our remote branches point (for instance, origin master).</p>
+<p>  Git fetch, however, does not change anything about your local state. It will not update your master branch or change anything about how your file system looks right now.</p>
+</li>
+<li><p><code>git pull</code></p>
+<p>  Equivalent to <code>git fetch &amp;&amp; git merge</code></p>
+<p>  <img src="http://i.imgur.com/7nCIfHw.png" alt=""></p>
+</li>
+</ul>
+<h3 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h3><ul>
+<li><p><code>git mv old_name new_name &amp;&amp; git commit -m &amp;&amp; git push origin master</code></p>
+<p>  Git can’t track file renaming but only content modification. So deal with it separately. Do it at the dir where the files locate.</p>
+</li>
+<li><p><code>git diff &lt;source_branch&gt; &lt;target-branch&gt;</code></p>
+<p>  Check difference between two versions.</p>
+</li>
+<li><p><code>git log</code></p>
+<p>  Get id for your commit.</p>
+</li>
+<li><p><code>git tag 1.0.0 &lt;id&gt;</code></p>
+<p>  Id can be less than 10 characters but should be unique.</p>
+</li>
+<li><p><code>git rebase master</code></p>
+<p>  <img src="http://i.imgur.com/KDFUWgL.png" alt=""></p>
+</li>
+<li><p><code>git cherry-pick c1 c2 c3</code></p>
+<p>  Git cherry-pick is great when you know which commits you want (and you know their corresponding hashes).</p>
+<p>  <img src="http://i.imgur.com/SRF66QK.png" alt=""></p>
+</li>
+<li><p><code>git rebase -i HEAD~4</code></p>
+<p>  Interactive rebase. From current to 4 steps before, choose the commits you need and order them. New branch starts from 4 step before.</p>
+<p>  <img src="http://i.imgur.com/ura6v9g.png" alt=""></p>
+</li>
+<li><p><code>git rebase -i &amp;&amp; git commit --amend</code></p>
+<p>  We used rebase -i to reorder the commits. Once the commit we wanted to change was on top, we could easily –amend it and re-order back to our preferred order.</p>
+</li>
+<li><p><code>git fakeTeamwork</code></p>
+<p>  Fake teamwork on remote repo.</p>
+</li>
+</ul>
+<p><img src="http://i.imgur.com/ynxS8Ap.png" alt=""></p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><ul>
+<li><a href="http://pcottle.github.io/learnGitBranching/" target="_blank" rel="external">Learn Git Branching</a></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Git/">Git</a> <a class="tag tag--primary tag--small t-link" href="/tags/Notes/">Notes</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/Bittiger-硅谷之路46/" data-tooltip="Bittiger 硅谷之路 46">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Victoria Hong. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/Bittiger-硅谷之路46/" data-tooltip="Bittiger 硅谷之路 46">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/GitCommandCheatsheet/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
+        
+            <h4 id="about-card-name">Victoria Hong</h4>
+        
+            <h5 id="about-card-bio"><p>Master student at CMU<br> Foodie &amp; Programmer &amp; Fashionista<br> Looking for full-time position @Bay area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Engineer</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Mountain View, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-rjanlllosg30d03qrddpwrs6wqf4k3v0bbo68hiifuvthyhqfefx2htcagu0.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://victoriahong.com/2016/05/GitCommandCheatsheet/';
+                 
+                    this.page.identifier = '2016/05/GitCommandCheatsheet/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'victoria-matrix';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>

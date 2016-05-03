@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://victoriahong.com/"/>
-  <updated>2016-04-29T22:32:11.000Z</updated>
+  <updated>2016-05-03T01:42:56.000Z</updated>
   <id>http://victoriahong.com/</id>
   
   <author>
@@ -14,6 +14,166 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git Command Cheatsheet</title>
+    <link href="http://victoriahong.com/2016/05/GitCommandCheatsheet/"/>
+    <id>http://victoriahong.com/2016/05/GitCommandCheatsheet/</id>
+    <published>2016-05-03T01:38:41.000Z</published>
+    <updated>2016-05-03T01:42:56.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;My-A-to-Z&quot;&gt;&lt;a href=&quot;#My-A-to-Z&quot; class=&quot;headerlink&quot; title=&quot;My A to Z&quot;&gt;&lt;/a&gt;My A to Z&lt;/h2&gt;&lt;p&gt;Help yourself with these cookies.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt; 
+&lt;h3 id=&quot;Concepts&quot;&gt;&lt;a href=&quot;#Concepts&quot; class=&quot;headerlink&quot; title=&quot;Concepts&quot;&gt;&lt;/a&gt;Concepts&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;HEAD&lt;/strong&gt; is the symbolic name for the currently checked out commit – it’s essentially what commit you’re working on top of.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git check branch_name&lt;/code&gt; will sync HEAD with latest branch. Check out a commit will attach HEAD to that commit.&lt;/p&gt;
+&lt;h3 id=&quot;Commit&quot;&gt;&lt;a href=&quot;#Commit&quot; class=&quot;headerlink&quot; title=&quot;Commit&quot;&gt;&lt;/a&gt;Commit&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git checkout origin master &amp;amp;&amp;amp; git commit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;http://i.imgur.com/HeNywjX.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Reverse-Changes&quot;&gt;&lt;a href=&quot;#Reverse-Changes&quot; class=&quot;headerlink&quot; title=&quot;Reverse Changes&quot;&gt;&lt;/a&gt;Reverse Changes&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git reset HEAD~1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Reset local current commit to 1 step before HEAD.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git revert HEAD~1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Revert remote pushed commit to 1 step before HEAD.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git fetch &amp;amp;&amp;amp; git rebase origin master &amp;amp;&amp;amp; git push&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;git pull --rebase&lt;/code&gt; is short for &lt;code&gt;git fetch &amp;amp;&amp;amp; git rebase&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Cmu9UdI.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Branch&quot;&gt;&lt;a href=&quot;#Branch&quot; class=&quot;headerlink&quot; title=&quot;Branch&quot;&gt;&lt;/a&gt;Branch&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git checkout -b new_branch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Create a new branch and check out.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git branch -d my_branch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Delete a new branch.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git checkout my_branch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Before checking out to another branch, commit or revert changes. You branch becomes visible only if you push it to origin branch.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git reset --hard HEAD&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Discard all uncommitted changes at local repo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git fetch origin&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;code&gt;git reset --hard origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Discard all committed changes at local repo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git merge my_branch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Check out master branch and then merge your own branch to master.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git add &amp;lt;filename&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  After solving all conflicts, mark as merged.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git checkout branch_name^&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Caret(^) is relative ref to parent. ^^ is to grandparent. Alternative to hash.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git checkout HEAD~4&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Equivalent to HEAD^^^^.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git branch -f master HEAD~3&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Moves (by force) the master branch to three parents behind HEAD.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Fetch-Data&quot;&gt;&lt;a href=&quot;#Fetch-Data&quot; class=&quot;headerlink&quot; title=&quot;Fetch Data&quot;&gt;&lt;/a&gt;Fetch Data&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git fetch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Downloads the commits that the remote has but are missing from our local repository, and updates where our remote branches point (for instance, origin master).&lt;/p&gt;
+&lt;p&gt;  Git fetch, however, does not change anything about your local state. It will not update your master branch or change anything about how your file system looks right now.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git pull&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Equivalent to &lt;code&gt;git fetch &amp;amp;&amp;amp; git merge&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;http://i.imgur.com/7nCIfHw.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Tricks&quot;&gt;&lt;a href=&quot;#Tricks&quot; class=&quot;headerlink&quot; title=&quot;Tricks&quot;&gt;&lt;/a&gt;Tricks&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git mv old_name new_name &amp;amp;&amp;amp; git commit -m &amp;amp;&amp;amp; git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Git can’t track file renaming but only content modification. So deal with it separately. Do it at the dir where the files locate.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git diff &amp;lt;source_branch&amp;gt; &amp;lt;target-branch&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Check difference between two versions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git log&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Get id for your commit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git tag 1.0.0 &amp;lt;id&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Id can be less than 10 characters but should be unique.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git rebase master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;http://i.imgur.com/KDFUWgL.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git cherry-pick c1 c2 c3&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Git cherry-pick is great when you know which commits you want (and you know their corresponding hashes).&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;http://i.imgur.com/SRF66QK.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git rebase -i HEAD~4&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Interactive rebase. From current to 4 steps before, choose the commits you need and order them. New branch starts from 4 step before.&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;http://i.imgur.com/ura6v9g.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git rebase -i &amp;amp;&amp;amp; git commit --amend&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  We used rebase -i to reorder the commits. Once the commit we wanted to change was on top, we could easily –amend it and re-order back to our preferred order.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git fakeTeamwork&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;  Fake teamwork on remote repo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/ynxS8Ap.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference:&quot;&gt;&lt;/a&gt;Reference:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://pcottle.github.io/learnGitBranching/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Learn Git Branching&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;My-A-to-Z&quot;&gt;&lt;a href=&quot;#My-A-to-Z&quot; class=&quot;headerlink&quot; title=&quot;My A to Z&quot;&gt;&lt;/a&gt;My A to Z&lt;/h2&gt;&lt;p&gt;Help yourself with these cookies.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+      <category term="Git" scheme="http://victoriahong.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Bittiger 硅谷之路 46</title>
+    <link href="http://victoriahong.com/2016/04/Bittiger-%E7%A1%85%E8%B0%B7%E4%B9%8B%E8%B7%AF46/"/>
+    <id>http://victoriahong.com/2016/04/Bittiger-硅谷之路46/</id>
+    <published>2016-04-29T22:42:32.000Z</published>
+    <updated>2016-04-29T23:44:10.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;p&gt;OOD for Blackjack game&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Diagram&quot;&gt;&lt;a href=&quot;#Diagram&quot; class=&quot;headerlink&quot; title=&quot;Diagram&quot;&gt;&lt;/a&gt;Diagram&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/gOUXtwk.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Player and Dealer extends dealer&lt;/li&gt;
+&lt;li&gt;Strategy Pattern&lt;/li&gt;
+&lt;li&gt;Don’t forget Game room&lt;/li&gt;
+&lt;li&gt;还原世界，探求合理，生长迭代&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;p&gt;OOD for Blackjack game&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+      <category term="Bittiger" scheme="http://victoriahong.com/tags/Bittiger/"/>
+    
+      <category term="硅谷之路" scheme="http://victoriahong.com/tags/%E7%A1%85%E8%B0%B7%E4%B9%8B%E8%B7%AF/"/>
+    
+      <category term="OOD" scheme="http://victoriahong.com/tags/OOD/"/>
+    
+  </entry>
   
   <entry>
     <title>Bittiger 硅谷之路 44 &amp; 45</title>
