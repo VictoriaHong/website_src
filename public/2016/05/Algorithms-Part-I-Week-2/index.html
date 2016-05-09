@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Victoria&#39;s Blog">
-    <title>Bittiger 硅谷之路 46 - Victoria&#39;s Blog</title>
+    <title>Algorithms Part I Week 2 - Victoria&#39;s Blog</title>
     <meta name="author" content="Victoria Hong">
     
     
@@ -15,18 +15,37 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="OverviewOOD for Blackjack game">
+    <meta name="description" content="Stacks and Queues &amp;amp; Elementary SortsOverview
+Modular programming style
+For stack, push pop
+Each operation cost constant time in the worst case
+Extra time and space to deal with the link
+
+
+For queu">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Bittiger 硅谷之路 46">
-<meta property="og:url" content="http://victoriahong.com/2016/04/Bittiger-硅谷之路46/index.html">
+<meta property="og:title" content="Algorithms Part I Week 2">
+<meta property="og:url" content="http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/index.html">
 <meta property="og:site_name" content="Victoria's Blog">
-<meta property="og:description" content="OverviewOOD for Blackjack game">
-<meta property="og:image" content="http://i.imgur.com/gOUXtwk.png">
-<meta property="og:updated_time" content="2016-04-29T23:44:10.000Z">
+<meta property="og:description" content="Stacks and Queues &amp;amp; Elementary SortsOverview
+Modular programming style
+For stack, push pop
+Each operation cost constant time in the worst case
+Extra time and space to deal with the link
+
+
+For queu">
+<meta property="og:updated_time" content="2016-05-07T06:38:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bittiger 硅谷之路 46">
-<meta name="twitter:description" content="OverviewOOD for Blackjack game">
-<meta name="twitter:image" content="http://i.imgur.com/gOUXtwk.png">
+<meta name="twitter:title" content="Algorithms Part I Week 2">
+<meta name="twitter:description" content="Stacks and Queues &amp;amp; Elementary SortsOverview
+Modular programming style
+For stack, push pop
+Each operation cost constant time in the worst case
+Extra time and space to deal with the link
+
+
+For queu">
     
     
         
@@ -233,13 +252,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Bittiger 硅谷之路 46
+            Algorithms Part I Week 2
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Fri Apr 29 2016 15:42:32 GMT-0700">
+    <time itemprop="datePublished" content="Fri May 06 2016 23:35:09 GMT-0700">
 	
-		    Apr 29, 2016
+		    May 06, 2016
     	
     </time>
     
@@ -254,15 +273,97 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>OOD for Blackjack game</p>
-<a id="more"></a>
-<h3 id="Diagram"><a href="#Diagram" class="headerlink" title="Diagram"></a>Diagram</h3><p><img src="http://i.imgur.com/gOUXtwk.png" alt=""></p>
-<ul>
-<li>Player and Dealer extends dealer</li>
-<li>Strategy Pattern</li>
-<li>Don’t forget Game room</li>
-<li>还原世界，探求合理，生长迭代</li>
+            <h2 id="Stacks-and-Queues-amp-Elementary-Sorts"><a href="#Stacks-and-Queues-amp-Elementary-Sorts" class="headerlink" title="Stacks and Queues &amp; Elementary Sorts"></a>Stacks and Queues &amp; Elementary Sorts</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><ul>
+<li>Modular programming style</li>
+<li>For stack, push pop<ul>
+<li>Each operation cost constant time in the worst case</li>
+<li>Extra time and space to deal with the link</li>
 </ul>
+</li>
+<li>For queue, enqueue dequeue<ul>
+<li>Each operation cost constant amortized time</li>
+<li>less wasted space</li>
+</ul>
+</li>
+<li>Generics</li>
+<li>Iterator</li>
+</ul>
+<a id="more"></a>
+<h3 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h3><p><strong>Linked-list implementation</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedStackOfStrings &#123;</span><br><span class="line">	private Node first = null;</span><br><span class="line"></span><br><span class="line">	private class Node &#123;</span><br><span class="line">		String item;</span><br><span class="line">		Node next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public boolean isEmpty()&#123;</span><br><span class="line">		return first == null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String pop()&#123;</span><br><span class="line">		String item = first.item;</span><br><span class="line">		first = first.next;</span><br><span class="line">		return item;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void push(String item)&#123;</span><br><span class="line">		Node oldFirst = first;</span><br><span class="line">		first = new Node();</span><br><span class="line">		first.item = item;</span><br><span class="line">		first.next = oldFirst;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Performance:</p>
+<ul>
+<li>Operations takes constant time</li>
+<li>40N bytes</li>
+</ul>
+<p><strong>Array implementation</strong></p>
+<p>s[N]</p>
+<p>push() –&gt; add new item at s[N]</p>
+<p>pop() –&gt; remove item from s[N-1]</p>
+<p>Defects:</p>
+<ul>
+<li>May cause stack overflow when N exceeds capacity</li>
+<li>Loitering problem (after pop, still keep a reference, can’t be GCed)</li>
+</ul>
+<p><strong>Resizing-array implementation</strong></p>
+<p>push() –&gt; double size of s[] when it is full</p>
+<p>pop() –&gt; halve size of s[] when it is one-quarter full</p>
+<p>Performance:</p>
+<ul>
+<li>operation</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">best</th>
+<th style="text-align:center">worst</th>
+<th style="text-align:center">aver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">construct</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">push</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">pop</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">size</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>8N when full; 32N when one-quarter full</li>
+</ul>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p><strong>Linked-list implementation</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedQueueOfStrings&#123;</span><br><span class="line">	private Node first, last;</span><br><span class="line"></span><br><span class="line">	private class Node &#123;</span><br><span class="line">		String item;</span><br><span class="line">		Node next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public boolean isEmpty()&#123;</span><br><span class="line">		return first == null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void enqueue(String item)&#123;</span><br><span class="line">		Node oldLast = last;</span><br><span class="line">		last = new Node();</span><br><span class="line">		last.item = item;</span><br><span class="line">		last.next = null;</span><br><span class="line">		if (isEmpty()) first = last;</span><br><span class="line">		else oldLast.next = last;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String dequeue()&#123;</span><br><span class="line">		String item = first.item;</span><br><span class="line">		first = first.next;</span><br><span class="line">		if (isEmpty()) last = null;</span><br><span class="line">		return item;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h3><p>In a nutshell, generics enable types (classes and interfaces) to be parameters when defining classes, interfaces and methods.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class FixedCapacityStack(int capacity)&#123;</span><br><span class="line">	s = (Item[]) new Object[capacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Java don’t allow create an array in generic type, so an ugly cast is needed here. Get a warning.</p>
+<p>Primitive type has a wrapper class. Autoboxing can cast btw a primitive type and its wrapper automatically behind the scenes.</p>
+<h3 id="Iterators"><a href="#Iterators" class="headerlink" title="Iterators"></a>Iterators</h3><p>Iterable is an interface which can return an iterator.</p>
+<p>Iterator is an interface which has methods: hasNext() and next().</p>
+<p>Foreach statement is equivalent to</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; i = stack.iterator();</span><br><span class="line"></span><br><span class="line">while(i.hasNext())&#123;</span><br><span class="line">	String s = i.next();</span><br><span class="line">	//do sth with s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>When order doesn’t matter, we use <strong>Bag API</strong>. Bag implements iterable interface. Method: add(), size(), iterator().</p>
+<h3 id="Stack-and-queue-applications"><a href="#Stack-and-queue-applications" class="headerlink" title="Stack and queue applications"></a>Stack and queue applications</h3><p>List collection implements iterable interface. But it is too broad.</p>
+<p>Dijkstra’s <strong><a href="http://algs4.cs.princeton.edu/13stacks/Evaluate.java.html" target="_blank" rel="external">two-stack algorithm</a></strong> to evaluate n arithmetic expression. Value stack and Operator stack. Omit ‘(‘ but pop when ‘)’.</p>
 
             
         </div>
@@ -272,7 +373,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/Bittiger/">Bittiger</a> <a class="tag tag--primary tag--small t-link" href="/tags/Notes/">Notes</a> <a class="tag tag--primary tag--small t-link" href="/tags/OOD/">OOD</a> <a class="tag tag--primary tag--small t-link" href="/tags/硅谷之路/">硅谷之路</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/Algorithms/">Algorithms</a> <a class="tag tag--primary tag--small t-link" href="/tags/Notes/">Notes</a>
 
             </div>
         
@@ -281,7 +382,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/GitCommandCheatsheet/"  data-tooltip="Git Command Cheatsheet">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/xinhong1/"  data-tooltip="Blog Update 1">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -289,7 +390,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/Bittiger-硅谷之路44and45/" data-tooltip="Bittiger 硅谷之路 44 &amp; 45">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/GitCommandCheatsheet/" data-tooltip="Git Command Cheatsheet">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -304,17 +405,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -362,7 +463,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/GitCommandCheatsheet/"  data-tooltip="Git Command Cheatsheet">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/xinhong1/"  data-tooltip="Blog Update 1">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -370,7 +471,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/04/Bittiger-硅谷之路44and45/" data-tooltip="Bittiger 硅谷之路 44 &amp; 45">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/GitCommandCheatsheet/" data-tooltip="Git Command Cheatsheet">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -385,17 +486,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -421,17 +522,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/04/Bittiger-硅谷之路46/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/">
                 <i class="fa fa-twitter"></i><span>Share on Twitter</span>
             </a>
         </li>
@@ -486,9 +587,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://victoriahong.com/2016/04/Bittiger-硅谷之路46/';
+                 this.page.url = 'http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/';
                  
-                    this.page.identifier = '2016/04/Bittiger-硅谷之路46/';
+                    this.page.identifier = '2016/05/Algorithms-Part-I-Week-2/';
                                   
              };
             (function() {

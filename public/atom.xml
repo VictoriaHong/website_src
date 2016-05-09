@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://victoriahong.com/"/>
-  <updated>2016-05-03T01:42:56.000Z</updated>
+  <updated>2016-05-09T04:57:50.000Z</updated>
   <id>http://victoriahong.com/</id>
   
   <author>
@@ -14,6 +14,162 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Blog Update 1</title>
+    <link href="http://victoriahong.com/2016/05/xinhong1/"/>
+    <id>http://victoriahong.com/2016/05/xinhong1/</id>
+    <published>2016-05-09T04:33:26.000Z</published>
+    <updated>2016-05-09T04:57:50.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Favicon-amp-Paper&quot;&gt;&lt;a href=&quot;#Favicon-amp-Paper&quot; class=&quot;headerlink&quot; title=&quot;Favicon &amp;amp; Paper&quot;&gt;&lt;/a&gt;Favicon &amp;amp; Paper&lt;/h2&gt;&lt;p&gt;Use an ios app named &lt;a href=&quot;https://www.fiftythree.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Paper&lt;/a&gt; to draw a favicon for my blog. lol&lt;/p&gt;
+&lt;p&gt;Hope you enjoy it :)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://burner.bonanza.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Remove background from images&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My favicon:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/5git7z3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Favicon-amp-Paper&quot;&gt;&lt;a href=&quot;#Favicon-amp-Paper&quot; class=&quot;headerlink&quot; title=&quot;Favicon &amp;amp; Paper&quot;&gt;&lt;/a&gt;Favicon &amp;amp; Paper&lt;/h2&gt;&lt;p&gt;Use an
+    
+    </summary>
+    
+      <category term="Life" scheme="http://victoriahong.com/categories/Life/"/>
+    
+    
+      <category term="Blog" scheme="http://victoriahong.com/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Algorithms Part I Week 2</title>
+    <link href="http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/"/>
+    <id>http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/</id>
+    <published>2016-05-07T06:35:09.000Z</published>
+    <updated>2016-05-07T06:38:49.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Stacks-and-Queues-amp-Elementary-Sorts&quot;&gt;&lt;a href=&quot;#Stacks-and-Queues-amp-Elementary-Sorts&quot; class=&quot;headerlink&quot; title=&quot;Stacks and Queues &amp;amp; Elementary Sorts&quot;&gt;&lt;/a&gt;Stacks and Queues &amp;amp; Elementary Sorts&lt;/h2&gt;&lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Modular programming style&lt;/li&gt;
+&lt;li&gt;For stack, push pop&lt;ul&gt;
+&lt;li&gt;Each operation cost constant time in the worst case&lt;/li&gt;
+&lt;li&gt;Extra time and space to deal with the link&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For queue, enqueue dequeue&lt;ul&gt;
+&lt;li&gt;Each operation cost constant amortized time&lt;/li&gt;
+&lt;li&gt;less wasted space&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Generics&lt;/li&gt;
+&lt;li&gt;Iterator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Stacks&quot;&gt;&lt;a href=&quot;#Stacks&quot; class=&quot;headerlink&quot; title=&quot;Stacks&quot;&gt;&lt;/a&gt;Stacks&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Linked-list implementation&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class LinkedStackOfStrings &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	private Node first = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	private class Node &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		String item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Node next;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public boolean isEmpty()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return first == null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public String pop()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		String item = first.item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		first = first.next;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void push(String item)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Node oldFirst = first;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		first = new Node();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		first.item = item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		first.next = oldFirst;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Performance:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Operations takes constant time&lt;/li&gt;
+&lt;li&gt;40N bytes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Array implementation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;s[N]&lt;/p&gt;
+&lt;p&gt;push() –&amp;gt; add new item at s[N]&lt;/p&gt;
+&lt;p&gt;pop() –&amp;gt; remove item from s[N-1]&lt;/p&gt;
+&lt;p&gt;Defects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;May cause stack overflow when N exceeds capacity&lt;/li&gt;
+&lt;li&gt;Loitering problem (after pop, still keep a reference, can’t be GCed)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Resizing-array implementation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;push() –&amp;gt; double size of s[] when it is full&lt;/p&gt;
+&lt;p&gt;pop() –&amp;gt; halve size of s[] when it is one-quarter full&lt;/p&gt;
+&lt;p&gt;Performance:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;operation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;best&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;worst&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;aver&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;construct&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;push&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;pop&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;size&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;8N when full; 32N when one-quarter full&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Queue&quot;&gt;&lt;a href=&quot;#Queue&quot; class=&quot;headerlink&quot; title=&quot;Queue&quot;&gt;&lt;/a&gt;Queue&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Linked-list implementation&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class LinkedQueueOfStrings&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	private Node first, last;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	private class Node &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		String item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Node next;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public boolean isEmpty()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return first == null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void enqueue(String item)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Node oldLast = last;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		last = new Node();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		last.item = item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		last.next = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		if (isEmpty()) first = last;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		else oldLast.next = last;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public String dequeue()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		String item = first.item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		first = first.next;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		if (isEmpty()) last = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return item;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Generics&quot;&gt;&lt;a href=&quot;#Generics&quot; class=&quot;headerlink&quot; title=&quot;Generics&quot;&gt;&lt;/a&gt;Generics&lt;/h3&gt;&lt;p&gt;In a nutshell, generics enable types (classes and interfaces) to be parameters when defining classes, interfaces and methods.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class FixedCapacityStack(int capacity)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	s = (Item[]) new Object[capacity];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Java don’t allow create an array in generic type, so an ugly cast is needed here. Get a warning.&lt;/p&gt;
+&lt;p&gt;Primitive type has a wrapper class. Autoboxing can cast btw a primitive type and its wrapper automatically behind the scenes.&lt;/p&gt;
+&lt;h3 id=&quot;Iterators&quot;&gt;&lt;a href=&quot;#Iterators&quot; class=&quot;headerlink&quot; title=&quot;Iterators&quot;&gt;&lt;/a&gt;Iterators&lt;/h3&gt;&lt;p&gt;Iterable is an interface which can return an iterator.&lt;/p&gt;
+&lt;p&gt;Iterator is an interface which has methods: hasNext() and next().&lt;/p&gt;
+&lt;p&gt;Foreach statement is equivalent to&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Iterator&amp;lt;String&amp;gt; i = stack.iterator();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;while(i.hasNext())&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	String s = i.next();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	//do sth with s&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;When order doesn’t matter, we use &lt;strong&gt;Bag API&lt;/strong&gt;. Bag implements iterable interface. Method: add(), size(), iterator().&lt;/p&gt;
+&lt;h3 id=&quot;Stack-and-queue-applications&quot;&gt;&lt;a href=&quot;#Stack-and-queue-applications&quot; class=&quot;headerlink&quot; title=&quot;Stack and queue applications&quot;&gt;&lt;/a&gt;Stack and queue applications&lt;/h3&gt;&lt;p&gt;List collection implements iterable interface. But it is too broad.&lt;/p&gt;
+&lt;p&gt;Dijkstra’s &lt;strong&gt;&lt;a href=&quot;http://algs4.cs.princeton.edu/13stacks/Evaluate.java.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;two-stack algorithm&lt;/a&gt;&lt;/strong&gt; to evaluate n arithmetic expression. Value stack and Operator stack. Omit ‘(‘ but pop when ‘)’.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Stacks-and-Queues-amp-Elementary-Sorts&quot;&gt;&lt;a href=&quot;#Stacks-and-Queues-amp-Elementary-Sorts&quot; class=&quot;headerlink&quot; title=&quot;Stacks and Queues &amp;amp; Elementary Sorts&quot;&gt;&lt;/a&gt;Stacks and Queues &amp;amp; Elementary Sorts&lt;/h2&gt;&lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Modular programming style&lt;/li&gt;
+&lt;li&gt;For stack, push pop&lt;ul&gt;
+&lt;li&gt;Each operation cost constant time in the worst case&lt;/li&gt;
+&lt;li&gt;Extra time and space to deal with the link&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For queue, enqueue dequeue&lt;ul&gt;
+&lt;li&gt;Each operation cost constant amortized time&lt;/li&gt;
+&lt;li&gt;less wasted space&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Generics&lt;/li&gt;
+&lt;li&gt;Iterator&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+      <category term="Algorithms" scheme="http://victoriahong.com/tags/Algorithms/"/>
+    
+  </entry>
   
   <entry>
     <title>Git Command Cheatsheet</title>
