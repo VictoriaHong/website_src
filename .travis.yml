@@ -7,9 +7,9 @@ branches:
 before_install:
 - openssl aes-256-cbc -K $encrypted_00bb88d476cb_key -iv $encrypted_00bb88d476cb_iv
   -in vh1_rsa.enc -out vh1_rsa -d
-- chmod 600 ~/.ssh/vh_rsa
+- chmod 600 ~/.ssh/vh1_rsa
 - eval $(ssh-agent)
-- ssh-add ~/.ssh/vh_rsa
+- ssh-add ~/.ssh/vh1_rsa
 - cp ssh_config ~/.ssh/config
 - git config --global user.name "VictoriaHong"
 - git config --global user.email "xin.victoria.hong@gmail.com"
