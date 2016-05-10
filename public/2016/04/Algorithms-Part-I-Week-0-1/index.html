@@ -114,13 +114,13 @@ lg N">
         
     
     
-        <meta property="og:image" content="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=640"/>
+        <meta property="og:image" content="http://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=640"/>
     
     
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-quwccsthbllipo6252snb2tfkddvrsp1eczkytpz3vmxpsb6nwodixemlkux.min.css">
+    <link rel="stylesheet" href="/assets/css/style-quwccsthbllipo6252snb2tfkddvrsp1eczkytpz3vmxpsb6nwodixemlkux.min.css" type="text/css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -154,10 +154,10 @@ lg N">
     
         
             <a  class="header-right-picture "
-                href="#about">
+                href="/#about">
         
         
-            <img class="header-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=90"/>
+            <img class="header-picture" src="http://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=90"/>
         
         </a>
     
@@ -172,7 +172,7 @@ lg N">
     
         <div class="sidebar-profile">
             <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
             </a>
             <span class="sidebar-profile-name">Victoria Hong</span>
         </div>
@@ -231,7 +231,7 @@ lg N">
             <li class="sidebar-button">
                 
                     <a  class="sidebar-button-link st-search-show-outputs"
-                         href="#search"
+                         href="/#search"
                         
                     >
                 
@@ -418,7 +418,7 @@ lg N">
 <p> (id[i] == id[p] –&gt; id[q])</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class QF</span><br><span class="line">&#123;</span><br><span class="line">	private int[] id;</span><br><span class="line"></span><br><span class="line">	public QF(int N)</span><br><span class="line">	&#123;</span><br><span class="line">		id = new int[N];</span><br><span class="line">		for (int i = 0; i &lt; N; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			id[i] = i; // initialize, cost: N</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public boolean connected(int p, int q)</span><br><span class="line">	&#123;</span><br><span class="line">		return id[p] == id[q]; // cost: 1</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void union(int p, int q) // too expensive, cost: N</span><br><span class="line">	&#123;</span><br><span class="line">		int pid = id[p];</span><br><span class="line">		int qid = id[q];</span><br><span class="line">		for (int i = 0; i &lt; id.length; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (id[i] == pid) id[i] = qid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class QF&#10;&#123;&#10;&#9;private int[] id;&#10;&#10;&#9;public QF(int N)&#10;&#9;&#123;&#10;&#9;&#9;id = new int[N];&#10;&#9;&#9;for (int i = 0; i &#60; N; i++)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;id[i] = i; // initialize, cost: N&#10;&#9;&#9;&#125;&#10;&#9;&#125;&#10;&#10;&#9;public boolean connected(int p, int q)&#10;&#9;&#123;&#10;&#9;&#9;return id[p] == id[q]; // cost: 1&#10;&#9;&#125;&#10;&#10;&#9;public void union(int p, int q) // too expensive, cost: N&#10;&#9;&#123;&#10;&#9;&#9;int pid = id[p];&#10;&#9;&#9;int qid = id[q];&#10;&#9;&#9;for (int i = 0; i &#60; id.length; i++)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;if (id[i] == pid) id[i] = qid;&#10;&#9;&#9;&#125;&#10;&#9;&#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>quick-find is too slow for huge problem !</strong><br><strong>too flat so union is expensive !</strong></p>
 <ul>
 <li><strong>Quick union / lazy approach</strong></li>
@@ -432,7 +432,7 @@ lg N">
 <li><p>union: set the id of p’s root to the id of q’s root</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class QU</span><br><span class="line">&#123;</span><br><span class="line">	private int[] id;</span><br><span class="line"></span><br><span class="line">	public QU(int N)</span><br><span class="line">	&#123;</span><br><span class="line">		id = new int[N];</span><br><span class="line">		for (int i = 0; i &lt; N; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			id[i] = i; // initialize, cost: N</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int root(int i)</span><br><span class="line">	&#123;</span><br><span class="line">		while (i != id[i])</span><br><span class="line">		&#123;</span><br><span class="line">			i = id[i]; // cost: depth of i</span><br><span class="line">		&#125;</span><br><span class="line">		return i;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public boolean connected(int p, int q)</span><br><span class="line">	&#123;</span><br><span class="line">		return root(p) == root(q); // cost: depth of p + depth of q</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void union(int p, int q)</span><br><span class="line">	&#123;</span><br><span class="line">		int i = root(p); // cost: depth of p</span><br><span class="line">		int j = root(q); // cost: depth of q</span><br><span class="line">		id[i] = j;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class QU&#10;&#123;&#10;&#9;private int[] id;&#10;&#10;&#9;public QU(int N)&#10;&#9;&#123;&#10;&#9;&#9;id = new int[N];&#10;&#9;&#9;for (int i = 0; i &#60; N; i++)&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;id[i] = i; // initialize, cost: N&#10;&#9;&#9;&#125;&#10;&#9;&#125;&#10;&#10;&#9;public int root(int i)&#10;&#9;&#123;&#10;&#9;&#9;while (i != id[i])&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;i = id[i]; // cost: depth of i&#10;&#9;&#9;&#125;&#10;&#9;&#9;return i;&#10;&#9;&#125;&#10;&#10;&#9;public boolean connected(int p, int q)&#10;&#9;&#123;&#10;&#9;&#9;return root(p) == root(q); // cost: depth of p + depth of q&#10;&#9;&#125;&#10;&#10;&#9;public void union(int p, int q)&#10;&#9;&#123;&#10;&#9;&#9;int i = root(p); // cost: depth of p&#10;&#9;&#9;int j = root(q); // cost: depth of q&#10;&#9;&#9;id[i] = j;&#10;&#9;&#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>too tall so find is expensive !</strong></p>
 <ul>
 <li><strong>Improve Quick-Union</strong></li>
@@ -440,7 +440,7 @@ lg N">
 <ol>
 <li><p>weighting to avoid tall trees : put smaller tree lower</p>
 <p> add a size array</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">   public void union(int p, int q)</span><br><span class="line">&#123;</span><br><span class="line">	int i = root(p); // cost: depth of p</span><br><span class="line">	int j = root(q); // cost: depth of q</span><br><span class="line">	if (i == j) return;</span><br><span class="line">	if (size[i] &lt; size[j])</span><br><span class="line">	&#123;</span><br><span class="line">		id[i] = j;</span><br><span class="line">		size[j] += size[i];</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		id[j] = i;</span><br><span class="line">		size[i] += size[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">   public void union(int p, int q)&#10;&#123;&#10;&#9;int i = root(p); // cost: depth of p&#10;&#9;int j = root(q); // cost: depth of q&#10;&#9;if (i == j) return;&#10;&#9;if (size[i] &#60; size[j])&#10;&#9;&#123;&#10;&#9;&#9;id[i] = j;&#10;&#9;&#9;size[j] += size[i];&#10;&#9;&#125;&#10;&#9;else&#10;&#9;&#123;&#10;&#9;&#9;id[j] = i;&#10;&#9;&#9;size[i] += size[j];&#10;&#9;&#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p> union takes constant time, given roots. (log N)</p>
 <p> depth of any node is at most log N.</p>
 <p> find cost log N.</p>
@@ -450,7 +450,7 @@ lg N">
 </ol>
 <p>Two - pass: After computing root of p, set id of each examined node to point to that root.</p>
 <p>One - pass: Make every other node in the path pointed to its <strong>grandparent</strong>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int root(int i)</span><br><span class="line">	&#123;</span><br><span class="line">		while (i != id[i])</span><br><span class="line">		&#123;</span><br><span class="line">			id[i] = id[id[i]];</span><br><span class="line">			i = id[i]; // cost: depth of i</span><br><span class="line">		&#125;</span><br><span class="line">		return i;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int root(int i)&#10;&#9;&#123;&#10;&#9;&#9;while (i != id[i])&#10;&#9;&#9;&#123;&#10;&#9;&#9;&#9;id[i] = id[id[i]];&#10;&#9;&#9;&#9;i = id[i]; // cost: depth of i&#10;&#9;&#9;&#125;&#10;&#9;&#9;return i;&#10;&#9;&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Memory-Usage"><a href="#Memory-Usage" class="headerlink" title="Memory Usage"></a>Memory Usage</h3><table>
 <thead>
 <tr>
@@ -721,7 +721,7 @@ lg N">
             <i class="fa fa-remove"></i>
         </div>
         
-            <img id="about-card-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
         
             <h4 id="about-card-name">Victoria Hong</h4>
         
@@ -750,7 +750,7 @@ lg N">
 <div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
     </body>
     <!--SCRIPTS-->
-<script src="/assets/js/scrip-rjanlllosg30d03qrddpwrs6wqf4k3v0bbo68hiifuvthyhqfefx2htcagu0.min.js"></script>
+<script src="/assets/js/scrip-rjanlllosg30d03qrddpwrs6wqf4k3v0bbo68hiifuvthyhqfefx2htcagu0.min.js" type="text/javascript"></script>
 <!--SCRIPTS END-->
 
     

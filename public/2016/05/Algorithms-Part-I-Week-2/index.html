@@ -51,13 +51,13 @@ For queu">
         
     
     
-        <meta property="og:image" content="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=640"/>
+        <meta property="og:image" content="http://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=640"/>
     
     
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-quwccsthbllipo6252snb2tfkddvrsp1eczkytpz3vmxpsb6nwodixemlkux.min.css">
+    <link rel="stylesheet" href="/assets/css/style-quwccsthbllipo6252snb2tfkddvrsp1eczkytpz3vmxpsb6nwodixemlkux.min.css" type="text/css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -91,10 +91,10 @@ For queu">
     
         
             <a  class="header-right-picture "
-                href="#about">
+                href="/#about">
         
         
-            <img class="header-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=90"/>
+            <img class="header-picture" src="http://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=90"/>
         
         </a>
     
@@ -109,7 +109,7 @@ For queu">
     
         <div class="sidebar-profile">
             <a href="/#about">
-                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
             </a>
             <span class="sidebar-profile-name">Victoria Hong</span>
         </div>
@@ -168,7 +168,7 @@ For queu">
             <li class="sidebar-button">
                 
                     <a  class="sidebar-button-link st-search-show-outputs"
-                         href="#search"
+                         href="/#search"
                         
                     >
                 
@@ -290,7 +290,7 @@ For queu">
 </ul>
 <a id="more"></a>
 <h3 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h3><p><strong>Linked-list implementation</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedStackOfStrings &#123;</span><br><span class="line">	private Node first = null;</span><br><span class="line"></span><br><span class="line">	private class Node &#123;</span><br><span class="line">		String item;</span><br><span class="line">		Node next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public boolean isEmpty()&#123;</span><br><span class="line">		return first == null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String pop()&#123;</span><br><span class="line">		String item = first.item;</span><br><span class="line">		first = first.next;</span><br><span class="line">		return item;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void push(String item)&#123;</span><br><span class="line">		Node oldFirst = first;</span><br><span class="line">		first = new Node();</span><br><span class="line">		first.item = item;</span><br><span class="line">		first.next = oldFirst;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedStackOfStrings &#123;&#10;&#9;private Node first = null;&#10;&#10;&#9;private class Node &#123;&#10;&#9;&#9;String item;&#10;&#9;&#9;Node next;&#10;&#9;&#125;&#10;&#10;&#9;public boolean isEmpty()&#123;&#10;&#9;&#9;return first == null;&#10;&#9;&#125;&#10;&#10;&#9;public String pop()&#123;&#10;&#9;&#9;String item = first.item;&#10;&#9;&#9;first = first.next;&#10;&#9;&#9;return item;&#10;&#9;&#125;&#10;&#10;&#9;public void push(String item)&#123;&#10;&#9;&#9;Node oldFirst = first;&#10;&#9;&#9;first = new Node();&#10;&#9;&#9;first.item = item;&#10;&#9;&#9;first.next = oldFirst;&#10;&#9;&#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p>Performance:</p>
 <ul>
 <li>Operations takes constant time</li>
@@ -352,15 +352,15 @@ For queu">
 <li>8N when full; 32N when one-quarter full</li>
 </ul>
 <h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p><strong>Linked-list implementation</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedQueueOfStrings&#123;</span><br><span class="line">	private Node first, last;</span><br><span class="line"></span><br><span class="line">	private class Node &#123;</span><br><span class="line">		String item;</span><br><span class="line">		Node next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public boolean isEmpty()&#123;</span><br><span class="line">		return first == null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void enqueue(String item)&#123;</span><br><span class="line">		Node oldLast = last;</span><br><span class="line">		last = new Node();</span><br><span class="line">		last.item = item;</span><br><span class="line">		last.next = null;</span><br><span class="line">		if (isEmpty()) first = last;</span><br><span class="line">		else oldLast.next = last;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String dequeue()&#123;</span><br><span class="line">		String item = first.item;</span><br><span class="line">		first = first.next;</span><br><span class="line">		if (isEmpty()) last = null;</span><br><span class="line">		return item;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedQueueOfStrings&#123;&#10;&#9;private Node first, last;&#10;&#10;&#9;private class Node &#123;&#10;&#9;&#9;String item;&#10;&#9;&#9;Node next;&#10;&#9;&#125;&#10;&#10;&#9;public boolean isEmpty()&#123;&#10;&#9;&#9;return first == null;&#10;&#9;&#125;&#10;&#10;&#9;public void enqueue(String item)&#123;&#10;&#9;&#9;Node oldLast = last;&#10;&#9;&#9;last = new Node();&#10;&#9;&#9;last.item = item;&#10;&#9;&#9;last.next = null;&#10;&#9;&#9;if (isEmpty()) first = last;&#10;&#9;&#9;else oldLast.next = last;&#10;&#9;&#125;&#10;&#10;&#9;public String dequeue()&#123;&#10;&#9;&#9;String item = first.item;&#10;&#9;&#9;first = first.next;&#10;&#9;&#9;if (isEmpty()) last = null;&#10;&#9;&#9;return item;&#10;&#9;&#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h3><p>In a nutshell, generics enable types (classes and interfaces) to be parameters when defining classes, interfaces and methods.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class FixedCapacityStack(int capacity)&#123;</span><br><span class="line">	s = (Item[]) new Object[capacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class FixedCapacityStack(int capacity)&#123;&#10;&#9;s = (Item[]) new Object[capacity];&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p>Java don’t allow create an array in generic type, so an ugly cast is needed here. Get a warning.</p>
 <p>Primitive type has a wrapper class. Autoboxing can cast btw a primitive type and its wrapper automatically behind the scenes.</p>
 <h3 id="Iterators"><a href="#Iterators" class="headerlink" title="Iterators"></a>Iterators</h3><p>Iterable is an interface which can return an iterator.</p>
 <p>Iterator is an interface which has methods: hasNext() and next().</p>
 <p>Foreach statement is equivalent to</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; i = stack.iterator();</span><br><span class="line"></span><br><span class="line">while(i.hasNext())&#123;</span><br><span class="line">	String s = i.next();</span><br><span class="line">	//do sth with s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Iterator&#60;String&#62; i = stack.iterator();&#10;&#10;while(i.hasNext())&#123;&#10;&#9;String s = i.next();&#10;&#9;//do sth with s&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p>When order doesn’t matter, we use <strong>Bag API</strong>. Bag implements iterable interface. Method: add(), size(), iterator().</p>
 <h3 id="Stack-and-queue-applications"><a href="#Stack-and-queue-applications" class="headerlink" title="Stack and queue applications"></a>Stack and queue applications</h3><p>List collection implements iterable interface. But it is too broad.</p>
 <p>Dijkstra’s <strong><a href="http://algs4.cs.princeton.edu/13stacks/Evaluate.java.html" target="_blank" rel="external">two-stack algorithm</a></strong> to evaluate n arithmetic expression. Value stack and Operator stack. Omit ‘(‘ but pop when ‘)’.</p>
@@ -552,7 +552,7 @@ For queu">
             <i class="fa fa-remove"></i>
         </div>
         
-            <img id="about-card-picture" src="https://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/62d0fa666fec0472476147ad2e6030cb?s=110"/>
         
             <h4 id="about-card-name">Victoria Hong</h4>
         
@@ -581,7 +581,7 @@ For queu">
 <div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
     </body>
     <!--SCRIPTS-->
-<script src="/assets/js/scrip-rjanlllosg30d03qrddpwrs6wqf4k3v0bbo68hiifuvthyhqfefx2htcagu0.min.js"></script>
+<script src="/assets/js/scrip-rjanlllosg30d03qrddpwrs6wqf4k3v0bbo68hiifuvthyhqfefx2htcagu0.min.js" type="text/javascript"></script>
 <!--SCRIPTS END-->
 
     
