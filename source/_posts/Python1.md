@@ -7,7 +7,7 @@ categories: Tech Notes
 
 ## 有点杂乱的笔记，第一次读python小项目
 
-关于shebang, click, decorator, random, ifmain, underscore用法, map & reduce & filter, self, yield, OOP, uuid, with
+关于shebang, click, decorator, random, ifmain, underscore用法, map & reduce & filter, self, yield, OOP, uuid, with.
 
 感谢[@wilbeibi](http://www.wilbeibi.com)的帮助 <3
 
