@@ -16,7 +16,7 @@ before_script:
 - git clone https://github.com/VictoriaHong/website_src.git blog/
 
 script:
-- hexo cleanß
+- hexo clean
 - hexo generate
 
 after_success:

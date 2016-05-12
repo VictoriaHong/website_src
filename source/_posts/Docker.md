@@ -242,3 +242,32 @@ Container over VM: lightweight; less resource; portability
 	`docker run -d -p --name website -- link database:db nginx` create the recipient container
 
 	db is alias for database
+
+
+### Bittiger讲解
+
+- union file system:
+
+	上层会覆盖下层的文件。
+
+- copy on write:
+
+	需要改什么文件，就从下层拿什么文件上来。但所有的修改都隔离的，一旦container删了，东西就都丢了。可以用volume映射。
+
+- Docker use namespace to achieve isolation
+
+	避免资源竞争
+
+- Docker use control group to achieve resource limiting
+
+	linux kernel functionality
+
+ - runC
+
+ 	an abstraction layer between Docker Driver anD Linux kernel
+
+	it interfaces with Linux kernel functionalities
+
+- Structure
+
+	![](http://i.imgur.com/rVrlbf8.png)
