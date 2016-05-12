@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://victoriahong.com/"/>
-  <updated>2016-05-10T00:29:51.000Z</updated>
+  <updated>2016-05-12T06:19:45.000Z</updated>
   <id>http://victoriahong.com/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bittiger 硅谷之路 7</title>
+    <link href="http://victoriahong.com/2016/05/Bittiger-%E7%A1%85%E8%B0%B7%E4%B9%8B%E8%B7%AF7/"/>
+    <id>http://victoriahong.com/2016/05/Bittiger-硅谷之路7/</id>
+    <published>2016-05-12T05:02:12.000Z</published>
+    <updated>2016-05-12T06:19:45.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Lessons-Learned-in-Scaling-Twitter&quot;&gt;&lt;a href=&quot;#Lessons-Learned-in-Scaling-Twitter&quot; class=&quot;headerlink&quot; title=&quot;Lessons Learned in Scaling Twitter&quot;&gt;&lt;/a&gt;Lessons Learned in Scaling Twitter&lt;/h2&gt;&lt;h3 id=&quot;一周结构及缺陷&quot;&gt;&lt;a href=&quot;#一周结构及缺陷&quot; class=&quot;headerlink&quot; title=&quot;一周结构及缺陷&quot;&gt;&lt;/a&gt;一周结构及缺陷&lt;/h3&gt;&lt;p&gt;  Monarail + MySQL&lt;/p&gt;
+&lt;p&gt;  Defects:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- MySQL难扩展：表格关系复杂；分布式更增加join复杂型
+- 小变化也要全部部署，deploy时间长
+- 性能差
+- 架构混乱
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;改进&quot;&gt;&lt;a href=&quot;#改进&quot; class=&quot;headerlink&quot; title=&quot;改进&quot;&gt;&lt;/a&gt;改进&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;存储分开&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tweets(gizzard)&lt;/li&gt;
+&lt;li&gt;Users(gizzard)&lt;/li&gt;
+&lt;li&gt;Timelines(redis)&lt;/li&gt;
+&lt;li&gt;SocialGraph(gizzard)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;路由、展式、逻辑分开&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TFE&lt;/li&gt;
+&lt;li&gt;Web, API, Monorail&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Tweets, Users, Timelines&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/gQqOPnZ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/RSsaj7d.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;解决方案&quot;&gt;&lt;a href=&quot;#解决方案&quot; class=&quot;headerlink&quot; title=&quot;解决方案&quot;&gt;&lt;/a&gt;解决方案&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;构建：开源的Twitter Server：配置、管理、日志、生命周期、监控服务&lt;/li&gt;
+&lt;li&gt;服务通信：开源的Finagle：服务发现、负载均衡、重试、连接池、统计数据收集、分布调试&lt;/li&gt;
+&lt;li&gt;调用服务：做什么（service as a function）&amp;amp; 怎么做（底层优化）&lt;/li&gt;
+&lt;li&gt;找到最优策略：注意观察median，而不是平均值&lt;/li&gt;
+&lt;li&gt;监控：zipkin&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Lessons-Learned-in-Scaling-Twitter&quot;&gt;&lt;a href=&quot;#Lessons-Learned-in-Scaling-Twitter&quot; class=&quot;headerlink&quot; title=&quot;Lessons Learned in Scali
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Bittiger" scheme="http://victoriahong.com/tags/Bittiger/"/>
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+      <category term="Structure" scheme="http://victoriahong.com/tags/Structure/"/>
+    
+      <category term="硅谷之路" scheme="http://victoriahong.com/tags/%E7%A1%85%E8%B0%B7%E4%B9%8B%E8%B7%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Python学习笔记1</title>
