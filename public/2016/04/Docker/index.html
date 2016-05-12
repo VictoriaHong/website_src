@@ -15,31 +15,17 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="Basic Concept
-is a platform for developing , shipping and running applications using container virtualization technology
-
-Traditional solution:
-  1app --&amp;#62; OS --&amp;#62; physical sever
-  Problems: slo">
+    <meta name="description" content="OverviewDocker Structure">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Docker">
 <meta property="og:url" content="http://victoriahong.com/2016/04/Docker/index.html">
 <meta property="og:site_name" content="Victoria's Blog">
-<meta property="og:description" content="Basic Concept
-is a platform for developing , shipping and running applications using container virtualization technology
-
-Traditional solution:
-  1app --&amp;#62; OS --&amp;#62; physical sever
-  Problems: slo">
-<meta property="og:updated_time" content="2016-04-22T05:41:00.000Z">
+<meta property="og:description" content="OverviewDocker Structure">
+<meta property="og:image" content="http://i.imgur.com/rVrlbf8.png">
+<meta property="og:updated_time" content="2016-05-12T04:55:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker">
-<meta name="twitter:description" content="Basic Concept
-is a platform for developing , shipping and running applications using container virtualization technology
-
-Traditional solution:
-  1app --&amp;#62; OS --&amp;#62; physical sever
-  Problems: slo">
+<meta name="twitter:description" content="OverviewDocker Structure">
     
     
         
@@ -267,7 +253,10 @@ Traditional solution:
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h3 id="Basic-Concept"><a href="#Basic-Concept" class="headerlink" title="Basic Concept"></a>Basic Concept</h3><ul>
+            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><strong>Docker Structure</strong></p>
+<p><img src="http://i.imgur.com/rVrlbf8.png" alt=""></p>
+<a id="more"></a>
+<h3 id="Basic-Concept"><a href="#Basic-Concept" class="headerlink" title="Basic Concept"></a>Basic Concept</h3><ul>
 <li><p>is a platform for developing , shipping and running applications using container virtualization technology</p>
 </li>
 <li><p>Traditional solution:</p>
@@ -425,6 +414,26 @@ Traditional solution:
 <p>  <code>docker run -d --name database postgres</code> create the source container first</p>
 <p>  <code>docker run -d -p --name website -- link database:db nginx</code> create the recipient container</p>
 <p>  db is alias for database</p>
+</li>
+</ul>
+<h3 id="Bittiger讲解"><a href="#Bittiger讲解" class="headerlink" title="Bittiger讲解"></a>Bittiger讲解</h3><ul>
+<li><p>union file system:</p>
+<p>  上层会覆盖下层的文件。</p>
+</li>
+<li><p>copy on write:</p>
+<p>  需要改什么文件，就从下层拿什么文件上来。但所有的修改都隔离的，一旦container删了，东西就都丢了。可以用volume映射。</p>
+</li>
+<li><p>Docker use namespace to achieve isolation</p>
+<p>  避免资源竞争</p>
+</li>
+<li><p>Docker use control group to achieve resource limiting</p>
+<p>  linux kernel functionality</p>
+<ul>
+<li><p>runC</p>
+<p> an abstraction layer between Docker Driver anD Linux kernel</p>
+<p>it interfaces with Linux kernel functionalities</p>
+</li>
+</ul>
 </li>
 </ul>
 

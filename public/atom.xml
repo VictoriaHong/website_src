@@ -909,9 +909,12 @@
     <link href="http://victoriahong.com/2016/04/Docker/"/>
     <id>http://victoriahong.com/2016/04/Docker/</id>
     <published>2016-04-21T19:38:04.000Z</published>
-    <updated>2016-04-22T05:41:00.000Z</updated>
+    <updated>2016-05-12T04:55:52.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
+    <content type="html">&lt;h2 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Docker Structure&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/rVrlbf8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;is a platform for developing , shipping and running applications using container virtualization technology&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Traditional solution:&lt;/p&gt;
@@ -1071,12 +1074,32 @@
 &lt;p&gt;  db is alias for database&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&quot;Bittiger讲解&quot;&gt;&lt;a href=&quot;#Bittiger讲解&quot; class=&quot;headerlink&quot; title=&quot;Bittiger讲解&quot;&gt;&lt;/a&gt;Bittiger讲解&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;union file system:&lt;/p&gt;
+&lt;p&gt;  上层会覆盖下层的文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;copy on write:&lt;/p&gt;
+&lt;p&gt;  需要改什么文件，就从下层拿什么文件上来。但所有的修改都隔离的，一旦container删了，东西就都丢了。可以用volume映射。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Docker use namespace to achieve isolation&lt;/p&gt;
+&lt;p&gt;  避免资源竞争&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Docker use control group to achieve resource limiting&lt;/p&gt;
+&lt;p&gt;  linux kernel functionality&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;runC&lt;/p&gt;
+&lt;p&gt; an abstraction layer between Docker Driver anD Linux kernel&lt;/p&gt;
+&lt;p&gt;it interfaces with Linux kernel functionalities&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Basic-Concept&quot;&gt;&lt;a href=&quot;#Basic-Concept&quot; class=&quot;headerlink&quot; title=&quot;Basic Concept&quot;&gt;&lt;/a&gt;Basic Concept&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;is a platform for
+      &lt;h2 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Docker Structure&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/rVrlbf8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     

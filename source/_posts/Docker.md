@@ -6,6 +6,15 @@ categories:
 - Tech Notes
 layout: true
 ---
+
+## Overview
+
+**Docker Structure**
+
+![](http://i.imgur.com/rVrlbf8.png)
+
+<!--more--->
+
 ### Basic Concept
 
 - is a platform for developing , shipping and running applications using container virtualization technology
@@ -267,7 +276,3 @@ Container over VM: lightweight; less resource; portability
  	an abstraction layer between Docker Driver anD Linux kernel
 
 	it interfaces with Linux kernel functionalities
-
-- Structure
-
-	![](http://i.imgur.com/rVrlbf8.png)
