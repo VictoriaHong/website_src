@@ -11,9 +11,11 @@ categories:
 
 **原文链接 [Questions to ask your interviewer](https://rkoutnik.com/articles/Questions-to-ask-your-interviewer.html?utm_source=wanqu.co&utm_campaign=Wanqu+Daily&utm_medium=website)**
 
+<!--more-->
+
 > Last time, we talked about how to design a technical interview as a filter, starting primarily with determining what sort of person is “good”. This time, I’m turning the tables to look at the other side of things. Let’s talk about some questions you can use to determine if a company is where you want to work. The tech world is a seller’s market for talent. It’s difficult to get a good read on a company from the information you have pre-interview. Companies of all shapes and sizes want to throw you through their gauntlet. Some interviewers will say whatever it takes to get you to sign, others look at their company with rose-tinted glasses. Neither will help you find a job you’ll love. Most questions are easily dodged (“What’s the worst part of this job?”, “There’s too much to do but you’ll fix that!”).
 
-上一话中我们首先从判断哪类人是人才，讨论了如何把技术面试设计成人才的过滤网。这一次，我们转换角色，来谈谈一些你可以用来决定你是否想在某个公司工作的问题。科技界是卖方市场。在面试前，从你了解的信息中很难对一个公司有很好的认识。形形色色各种公司都为你设置了重重关卡。一些面试官为了让你签字而信口开河，另一些则是对公司进行了美化。他们都无法帮你找到你喜爱的工作。多数问题很容易避开，比如，“这个工作哪方面不太好？”，“有太多要做的但是你会处理好的。”
+上次，我们从如何判断什么算“好”的技术人员，讨论了如何通过技术面试筛选求职者。这一次，我们转换角色，来谈谈一些你可以用来决定你是否想在某个公司工作。科技界是卖方市场。在面试前，从你了解的信息中很难对一个公司有准确的认识。形形色色各种公司都为你设置了重重关卡。一些面试官为了让你签字而信口开河，另一些则是对公司进行了美化。他们都无法帮你找到你喜爱的工作。多数问题很容易避开，比如，“这个工作哪方面不太好？”，“工作比较重但是你一定能搞定。”
 
 > On the other hand, an attentive interviewer will se these questions as a positive - you’re the sort of person who thinks things through and knows what they’re after. This also helps the interviewer determine what you’re looking for and tailor the rest of the interview to that.
 
@@ -37,18 +39,18 @@ A: I believe in clear, open communication and have noticed that in general every
 
 问：你的团队如何战胜挑战？
 
-答：我信任清晰和敞开的沟通，Initech中的每一位员工都信奉这一点。透明帮助我的团队克服困难、共同前进。
+答：我信任清晰和敞开的沟通，Initech 中的每一位员工都信奉这一点。透明帮助我的团队克服困难、共同前进。
 
 > Q: Can you give me an example of your team overcoming a difficult obstacle recently?
 A: Well, I guess we talk about blockers at our daily standups.
 
 问：你能给我举个你们团队最近克服困难的例子吗？
 
-答：好吧，我想我们大概是在聊我们每天都会遇到的困难。
+答：好吧，我想我们大概是在聊我们每天站立会议都会讨论的困难。
 
 > Getting concrete examples means you get past the marketing fluff to a company’s real values.
 
-得到具体的例子表明你从营销表象深入到了公司的真正内在。
+得到具体的例子表明你透过市场的表象深入到了公司的真正内在。
 
 ### Finding red flags 发现潜在问题
 
@@ -58,11 +60,11 @@ A: Well, I guess we talk about blockers at our daily standups.
 
 > There are two things I’m looking for in this question: another angle on the job description and wishful thinking. Job descriptions tell part of the story. Now that you’re in for an interview, it’s time to get the other half. This is a great time to talk about potential projects, advancement, and how you in particular will fit in. If the interview seems tense, asking this question can lighten the mood a bit. On the other hand, I’ve often heard things like “Tests are important but we don’t have them. We’re hoping you’ll be able to help out with that.” Did you catch the wishful thinking there? If tests are important then the team should already have a test suite. The interviewer is expecting you to change the company culture without any power to do so. The interviewer isn’t twirling their moustache Snidely Whiplash-style, expecting massive change from a new hire - it’s just the optimism that curses every engineer.
 
-从这个问题中我想了解两点：另一个角度的职位描述和可能存在的过分期待。
+我想从这个问题中了解两点：另一个角度的职位描述和可能存在的过分期待。
 
-职位描述只是一方面。既然你正身处面试之中，是时候了解另一半了。这是一个探讨未来项目、晋升机会以及你在其中的确切角色的大好机会。如果面试很紧张，问这个问题可以让心情稍微放松一些。
+职位描述只是一方面。既然你正身处面试之中，是时候了解另一半了。这是一个探讨未来项目、晋升机会以及你在其中的确切角色的大好机会。如果面试很紧张，问这个问题可以让你的心情稍微放松一些。
 
-另一方面，我时常听到像这样的回答“测试很重要但是我们一直没有。我们希望你能帮我们解决。”你意识到对你的期待了吗？如果测试很重要，那团队肯定早就写好了一套测试。面试官希望你不费吹灰之力就改变公司的文化。面试官并不是一边把自己的胡须卷成Snidely Whiplash的样子，一边期待新员工能带来多大改变--是乐观主义祸害了每个工程师。
+另一方面，我时常听到像这样的回答“测试很重要但是我们一直没有。我们希望你能帮我们解决。”你意识到对你的期待了吗？如果测试很重要，那团队肯定早就写好了一套测试。面试官希望你不费吹灰之力就改变公司的文化。面试官不是一边狞笑着卷着自己的小胡子（译者注：Snidely Whiplash指的是动画片里坏人，他有弯弯的胡子），一边期望一个新员工能让整个公司焕然一新--而事实上这只是诅咒着每个工程师的乐观主义。
 
 > How often are you pulled off your primary task?
 
@@ -70,7 +72,7 @@ A: Well, I guess we talk about blockers at our daily standups.
 
 > It seems obvious that someone with the title of “Software Engineer” would spend most of their time engineering software. In some places, a more accurate title would be “meeting attender who writes code on occasion.” Other places expect developers to expand beyond their role, creating their own wireframes or deployment strategies. Even worse, your job requirements could change dramatically. A startup hired one of my friends as a full-stack engineer and he spent most of his time managing ad campaigns on social networks.
 
-我们轻信具有“软件工程师”头衔的人大部分时间会花在开发软件上。然而在一些地方，“偶尔写代码的与会人员”才是更准确地称号。另一些地方则是期待开发者们能延伸自己的职责，创建自己的框图和部署策略。更糟糕的情况是，你的工作需求可能会发生戏剧性变化。一个创业公司雇佣我的一个朋友当全栈工程师，可是他把大部分时间花在管理社交网络上的广告战上去了。
+显而易见，具有“软件工程师”头衔的人应该把大部分时间花在开发软件上。然而在一些地方，“偶尔写代码的与会人员”才是更准确地称号。另一些地方则是期待开发者们能延伸自己的职责，创建自己的框图和部署策略。更糟糕的情况是，你的工作需求可能会发生巨大的变化。一个创业公司雇佣我的一个朋友当全栈工程师，结果他把大部分时间花在管理社交网络上的广告战上去了。
 
 ### Technical 技术
 
@@ -80,11 +82,11 @@ A: Well, I guess we talk about blockers at our daily standups.
 
 > This question is essentially a simple Joel test. Lack of source control, tests & code review are all smells that shouldn’t nix the company altogether but will need consideration.
 
-这个问题本质上是个简单的Joel测试。没有来源控制、测试和代码复查都表明你不应该完全放弃这家公司，但是你需要好好考虑一下。
+这个问题本质上是个简单的[Joel测试](http://www.joelonsoftware.com/articles/fog0000000043.html)。缺少版本控制、测试和代码审查都警示着你，即使不完全放弃这家公司，也需要仔细斟酌一番。
 
 > How does your deployment process work?
 
-问：你们部署实施工作的流程是怎么样的？
+问：你们部署代码的流程是怎洋的？
 
 > I once joined a company without asking this question and to my dismay discovered the answer was “ssh into all of our servers (one by one) and manually copy/paste the files”. This should be a gimme for any modern company.
 
@@ -92,7 +94,7 @@ A: Well, I guess we talk about blockers at our daily standups.
 
 > A basic deployment process should be: 1. able to roll back；2. easy to see what changed；3. deterministic. Even `git pull` suffices here (though only as a bare minimum).
 
-基本的实施流程应当是：能中止的，易察觉变化的，确定的。`git pull`姑且不算，仅仅是个最低要求。
+一个基本的部署流程应该是，能够回滚，能够发现有什么变化，确定的。`git pull`姑且不算，这仅仅是最低要求。
 
 > The last person who was fired - why did that happen? Do you think it was for a reason other than the official one?
 
@@ -136,7 +138,7 @@ A: Well, I guess we talk about blockers at our daily standups.
 
 > If I’m not meeting expectations, how will I know?
 
-问：如果我无法满足对我的期待，我怎么知道呢？
+问：如果我无法满足公司对我的预期，我怎么知道呢？
 
 > You can’t improve without feedback of both kinds. I’ve worked at companies that would rather an engineer drag along, closing tickets than dare to ask them to improve and risk them leaving. Others can be sudden - quick firings without much warning. You’re looking for a company with a culture of candid feedback. Everything works better when people are honest with each other. A workplace that values consistent, high-quality feedback means you’ll improve your technical skillset and be surrounded by constantly-improving folks.
 

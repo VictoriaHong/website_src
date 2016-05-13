@@ -10,7 +10,7 @@ categories:
 
 Help yourself with these cookies.
 
-<!--more--> 
+<!--more-->
 
 ### Concepts
 
@@ -144,7 +144,11 @@ Help yourself with these cookies.
 
 ![](http://i.imgur.com/ynxS8Ap.png)
 
+### Syncing a fork
 
+	- [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
+
+	- [Syncing a fork](https://help.github.com/articles/syncing-a-fork/)
 
 #### Reference:
 
