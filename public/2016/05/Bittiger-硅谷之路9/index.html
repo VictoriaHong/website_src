@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Victoria&#39;s Blog">
-    <title>Bittiger 硅谷之路 7 - Victoria&#39;s Blog</title>
+    <title>Bittiger 硅谷之路 9 - Victoria&#39;s Blog</title>
     <meta name="author" content="Victoria Hong">
     
     
@@ -15,33 +15,22 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="Lessons Learned in Scaling Twitter一周结构及缺陷  Monarail + MySQL
-  Defects:
-- MySQL难扩展：表格关系复杂；分布式更增加join复杂型
-- 小变化也要全部部署，deploy时间长
-- 性能差
-- 架构混乱">
+    <meta name="description" content="深入浅出 Google File SystemOverviewGoogle 三篇论文：Google File System, BigTable, MapReduce.
+Structure:">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Bittiger 硅谷之路 7">
-<meta property="og:url" content="http://victoriahong.com/2016/05/Bittiger-硅谷之路7/index.html">
+<meta property="og:title" content="Bittiger 硅谷之路 9">
+<meta property="og:url" content="http://victoriahong.com/2016/05/Bittiger-硅谷之路9/index.html">
 <meta property="og:site_name" content="Victoria's Blog">
-<meta property="og:description" content="Lessons Learned in Scaling Twitter一周结构及缺陷  Monarail + MySQL
-  Defects:
-- MySQL难扩展：表格关系复杂；分布式更增加join复杂型
-- 小变化也要全部部署，deploy时间长
-- 性能差
-- 架构混乱">
-<meta property="og:image" content="http://i.imgur.com/gQqOPnZ.png">
-<meta property="og:image" content="http://i.imgur.com/RSsaj7d.png">
-<meta property="og:updated_time" content="2016-05-13T00:22:05.000Z">
+<meta property="og:description" content="深入浅出 Google File SystemOverviewGoogle 三篇论文：Google File System, BigTable, MapReduce.
+Structure:">
+<meta property="og:image" content="http://i.imgur.com/aEE7aX1.png">
+<meta property="og:image" content="http://i.imgur.com/oJEUmF6.png">
+<meta property="og:image" content="http://i.imgur.com/ZtpT1gn.png">
+<meta property="og:updated_time" content="2016-05-13T00:13:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bittiger 硅谷之路 7">
-<meta name="twitter:description" content="Lessons Learned in Scaling Twitter一周结构及缺陷  Monarail + MySQL
-  Defects:
-- MySQL难扩展：表格关系复杂；分布式更增加join复杂型
-- 小变化也要全部部署，deploy时间长
-- 性能差
-- 架构混乱">
+<meta name="twitter:title" content="Bittiger 硅谷之路 9">
+<meta name="twitter:description" content="深入浅出 Google File SystemOverviewGoogle 三篇论文：Google File System, BigTable, MapReduce.
+Structure:">
     
     
         
@@ -248,13 +237,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Bittiger 硅谷之路 7
+            Bittiger 硅谷之路 9
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Wed May 11 2016 22:02:12 GMT-0700">
+    <time itemprop="datePublished" content="Thu May 12 2016 15:40:36 GMT-0700">
 	
-		    May 11, 2016
+		    May 12, 2016
     	
     </time>
     
@@ -269,39 +258,47 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h2 id="Lessons-Learned-in-Scaling-Twitter"><a href="#Lessons-Learned-in-Scaling-Twitter" class="headerlink" title="Lessons Learned in Scaling Twitter"></a>Lessons Learned in Scaling Twitter</h2><h3 id="一周结构及缺陷"><a href="#一周结构及缺陷" class="headerlink" title="一周结构及缺陷"></a>一周结构及缺陷</h3><p>  Monarail + MySQL</p>
-<p>  Defects:</p>
-<pre><code>- MySQL难扩展：表格关系复杂；分布式更增加join复杂型
-- 小变化也要全部部署，deploy时间长
-- 性能差
-- 架构混乱
-</code></pre><a id="more"></a>
-<h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><ol>
-<li><p>存储分开</p>
+            <h2 id="深入浅出-Google-File-System"><a href="#深入浅出-Google-File-System" class="headerlink" title="深入浅出 Google File System"></a>深入浅出 Google File System</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>Google 三篇论文：Google File System, BigTable, MapReduce.</p>
+<p>Structure:</p>
+<p><img src="http://i.imgur.com/aEE7aX1.png" alt=""></p>
+<a id="more"></a>
+<h3 id="Store-a-File"><a href="#Store-a-File" class="headerlink" title="Store a File"></a>Store a File</h3><p>Disk 有一部分存文件的 metadata，包括文件属性（name, createdTime, size）以及索引。</p>
+<p>Block 存文件具体内容 offset。一个 block 大小为 1024 bytes。</p>
+<h3 id="Store-a-Big-File"><a href="#Store-a-Big-File" class="headerlink" title="Store a Big File"></a>Store a Big File</h3><p>用 chunk 来存。一个 chunk 大小为 64 MB。等于 64K 个 block。</p>
+<p>Advantages: less metadata; less data flow.</p>
+<p>Disadvantages: small files waste space.</p>
+<h3 id="Store-supper-big-file"><a href="#Store-supper-big-file" class="headerlink" title="Store supper big file"></a>Store supper big file</h3><p>索引放在 master 设备上，记录 chunk server 和 offset。</p>
+<p>Disadvantages: chunk server 的变化要通知 master。这样加重了 master 负担。</p>
+<p>Solution: master 不记录每块数据的 offset，只记录在哪个 chunk server 上。低耦合。</p>
+<h3 id="Find-damaged-data"><a href="#Find-damaged-data" class="headerlink" title="Find damaged data"></a>Find damaged data</h3><p>每个 block 存一个 32 bit 的 checksum。读取时验证一下。</p>
+<h3 id="Duplicate-Chunk-Server"><a href="#Duplicate-Chunk-Server" class="headerlink" title="Duplicate Chunk Server"></a>Duplicate Chunk Server</h3><ul>
+<li>3 replicates</li>
+<li>跨机架、跨中心：数据中心建立在不同地方，每个地方又有放在不同机架上的副本。</li>
+</ul>
+<h3 id="Recover"><a href="#Recover" class="headerlink" title="Recover"></a>Recover</h3><p>Get help from master to get right data when find damaged data.</p>
+<p>Master monitors all slaves’ heart-beat to recognize dead one.</p>
+<p>Recover strategy based on the number of alive duplicates. 副本少的先修复。</p>
+<h3 id="Deal-with-hot-spot"><a href="#Deal-with-hot-spot" class="headerlink" title="Deal with hot spot"></a>Deal with hot spot</h3><p>Duplicate chunk server based on disk and bandwidth utilization.</p>
+<h3 id="How-to-read-a-file"><a href="#How-to-read-a-file" class="headerlink" title="How to read a file"></a>How to read a file</h3><ul>
+<li><p>Read:</p>
+<p><img src="http://i.imgur.com/oJEUmF6.png" alt=""></p>
+<p>key points:</p>
 <ul>
-<li>Tweets(gizzard)</li>
-<li>Users(gizzard)</li>
-<li>Timelines(redis)</li>
-<li>SocialGraph(gizzard)</li>
+<li>chunk index 是可以由 client 自己计算出来的，大小固定的。</li>
+<li>找到最近的 chunk server。</li>
 </ul>
 </li>
-<li><p>路由、展式、逻辑分开</p>
+<li><p>Write:</p>
+<p><img src="http://i.imgur.com/ZtpT1gn.png" alt=""></p>
+<p>key points:</p>
 <ul>
-<li>TFE</li>
-<li>Web, API, Monorail</li>
-<li><p>Tweets, Users, Timelines</p>
-<p><img src="http://i.imgur.com/gQqOPnZ.png" alt=""></p>
-<p><img src="http://i.imgur.com/RSsaj7d.png" alt=""></p>
-</li>
+<li>主 chunk server 是随机选的，只对这一次的操作负责。</li>
+<li>要写的东西是发给最近的 chunk server 而不是主 server。</li>
+<li>chunk server 之间传输速度很快。分级传递即可，不需要并发。</li>
+<li>主 server 跟 client 通讯，告知全部 cache 好了，再通知各个从属 server 一起写。先缓存再写入可以消除大部分写失败。</li>
+<li>发生写错误的时候，交给上级的 GFS master 去处理。下级的功能越单一越好。</li>
 </ul>
 </li>
-</ol>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>构建：开源的Twitter Server：配置、管理、日志、生命周期、监控服务</li>
-<li>服务通信：开源的Finagle：服务发现、负载均衡、重试、连接池、统计数据收集、分布调试</li>
-<li>调用服务：做什么（service as a function）&amp; 怎么做（底层优化）</li>
-<li>找到最优策略：注意观察median，而不是平均值</li>
-<li>监控：zipkin</li>
 </ul>
 
             
@@ -321,7 +318,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/question-to-ask-your-interviewer-translation/"  data-tooltip="Question to Ask Your Interviewer (Translation)">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -329,7 +326,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/Python1/" data-tooltip="Python学习笔记1">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/question-to-ask-your-interviewer-translation/" data-tooltip="Question to Ask Your Interviewer (Translation)">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -344,17 +341,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -402,7 +399,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/question-to-ask-your-interviewer-translation/"  data-tooltip="Question to Ask Your Interviewer (Translation)">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -410,7 +407,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/Python1/" data-tooltip="Python学习笔记1">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/question-to-ask-your-interviewer-translation/" data-tooltip="Question to Ask Your Interviewer (Translation)">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -425,17 +422,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -461,17 +458,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Bittiger-硅谷之路7/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://victoriahong.com/2016/05/Bittiger-硅谷之路9/">
                 <i class="fa fa-twitter"></i><span>Share on Twitter</span>
             </a>
         </li>
@@ -526,9 +523,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://victoriahong.com/2016/05/Bittiger-硅谷之路7/';
+                 this.page.url = 'http://victoriahong.com/2016/05/Bittiger-硅谷之路9/';
                  
-                    this.page.identifier = '2016/05/Bittiger-硅谷之路7/';
+                    this.page.identifier = '2016/05/Bittiger-硅谷之路9/';
                                   
              };
             (function() {

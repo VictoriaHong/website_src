@@ -229,7 +229,51 @@
 <section class="postShorten-group main-content-wrap">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2016/05/Bittiger-硅谷之路9/">
+                            Bittiger 硅谷之路 9
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Thu May 12 2016 15:40:36 GMT-0700">
+	
+		    May 12, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Tech-Notes/">Tech Notes</a>
+
+
+    
+</div>
+            </div>
+            
+            
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <h2 id="深入浅出-Google-File-System"><a href="#深入浅出-Google-File-System" class="headerlink" title="深入浅出 Google File System"></a>深入浅出 Google File System</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>Google 三篇论文：Google File System, BigTable, MapReduce.</p>
+<p>Structure:</p>
+<p><img src="http://i.imgur.com/aEE7aX1.png" alt=""></p>
+                    
+                        <a href="/2016/05/Bittiger-硅谷之路9/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
+                        
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
@@ -256,50 +300,19 @@
             </div>
             
             
-                <div class="postShorten-content" itemprop="articleBody">
+                <div class="postShorten-excerpt" itemprop="articleBody">
                     <h2 id="Lessons-Learned-in-Scaling-Twitter"><a href="#Lessons-Learned-in-Scaling-Twitter" class="headerlink" title="Lessons Learned in Scaling Twitter"></a>Lessons Learned in Scaling Twitter</h2><h3 id="一周结构及缺陷"><a href="#一周结构及缺陷" class="headerlink" title="一周结构及缺陷"></a>一周结构及缺陷</h3><p>  Monarail + MySQL</p>
 <p>  Defects:</p>
 <pre><code>- MySQL难扩展：表格关系复杂；分布式更增加join复杂型
 - 小变化也要全部部署，deploy时间长
 - 性能差
 - 架构混乱
-</code></pre><h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><ol>
-<li><p>存储分开</p>
-<ul>
-<li>Tweets(gizzard)</li>
-<li>Users(gizzard)</li>
-<li>Timelines(redis)</li>
-<li>SocialGraph(gizzard)</li>
-</ul>
-</li>
-<li><p>路由、展式、逻辑分开</p>
-<ul>
-<li>TFE</li>
-<li>Web, API, Monorail</li>
-<li><p>Tweets, Users, Timelines</p>
-<p><img src="http://i.imgur.com/gQqOPnZ.png" alt=""></p>
-<p><img src="http://i.imgur.com/RSsaj7d.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>构建：开源的Twitter Server：配置、管理、日志、生命周期、监控服务</li>
-<li>服务通信：开源的Finagle：服务发现、负载均衡、重试、连接池、统计数据收集、分布调试</li>
-<li>调用服务：做什么（service as a function）&amp; 怎么做（底层优化）</li>
-<li>找到最优策略：注意观察median，而不是平均值</li>
-<li>监控：zipkin</li>
-</ul>
-
+</code></pre>
                     
+                        <a href="/2016/05/Bittiger-硅谷之路7/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
                         
-                    
-                    
-                        <p>
-                            <a href="/2016/05/Bittiger-硅谷之路7/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
                     
                 </div>
             
