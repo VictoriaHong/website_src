@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://victoriahong.com/"/>
-  <updated>2016-05-13T00:13:03.000Z</updated>
+  <updated>2016-05-13T05:37:20.000Z</updated>
   <id>http://victoriahong.com/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bittiger 硅谷之路 10</title>
+    <link href="http://victoriahong.com/2016/05/Bittiger-%E7%A1%85%E8%B0%B7%E4%B9%8B%E8%B7%AF10/"/>
+    <id>http://victoriahong.com/2016/05/Bittiger-硅谷之路10/</id>
+    <published>2016-05-13T04:45:38.000Z</published>
+    <updated>2016-05-13T05:37:20.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;深入浅出BigTable&quot;&gt;&lt;a href=&quot;#深入浅出BigTable&quot; class=&quot;headerlink&quot; title=&quot;深入浅出BigTable&quot;&gt;&lt;/a&gt;深入浅出BigTable&lt;/h2&gt;&lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;p&gt;  NoSQL db&lt;/p&gt;
+&lt;p&gt;  使用&lt;k, v=&quot;&quot;&gt;的物理结构存储超大表&lt;/k,&gt;&lt;/p&gt;
+&lt;p&gt;  BigTable吃内存，GFS吃硬盘&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;文件内快速查询&quot;&gt;&lt;a href=&quot;#文件内快速查询&quot; class=&quot;headerlink&quot; title=&quot;文件内快速查询&quot;&gt;&lt;/a&gt;文件内快速查询&lt;/h3&gt;&lt;p&gt;Table = a list of sorted &lt;key, value=&quot;&quot;&gt; pairs&lt;/key,&gt;&lt;/p&gt;
+&lt;h3 id=&quot;保存很大的表&quot;&gt;&lt;a href=&quot;#保存很大的表&quot; class=&quot;headerlink&quot; title=&quot;保存很大的表&quot;&gt;&lt;/a&gt;保存很大的表&lt;/h3&gt;&lt;p&gt;A big table = a list of tablets&lt;/p&gt;
+&lt;p&gt;A tablet = a list of sorted &lt;key, value=&quot;&quot;&gt; pairs&lt;/key,&gt;&lt;/p&gt;
+&lt;p&gt;表内有序，表间无序&lt;/p&gt;
+&lt;h3 id=&quot;保存超大表&quot;&gt;&lt;a href=&quot;#保存超大表&quot; class=&quot;headerlink&quot; title=&quot;保存超大表&quot;&gt;&lt;/a&gt;保存超大表&lt;/h3&gt;&lt;p&gt;再拆出来一层小小表&lt;/p&gt;
+&lt;h3 id=&quot;如何写数据&quot;&gt;&lt;a href=&quot;#如何写数据&quot; class=&quot;headerlink&quot; title=&quot;如何写数据&quot;&gt;&lt;/a&gt;如何写数据&lt;/h3&gt;&lt;p&gt;不直接写入硬盘&lt;/p&gt;
+&lt;p&gt;写入 memTable (内存表)来加速: &lt;key, value=&quot;&quot;&gt; pairs&lt;/key,&gt;&lt;/p&gt;
+&lt;p&gt;A tablet = memTable + a list of smallTables&lt;/p&gt;
+&lt;p&gt;当内存表满了（64MB），写入硬盘。&lt;/p&gt;
+&lt;h3 id=&quot;避免数据丢失&quot;&gt;&lt;a href=&quot;#避免数据丢失&quot; class=&quot;headerlink&quot; title=&quot;避免数据丢失&quot;&gt;&lt;/a&gt;避免数据丢失&lt;/h3&gt;&lt;p&gt;内存可能丢失&lt;/p&gt;
+&lt;p&gt;写入 memTable 的同时，写入硬盘内 tableLog。&lt;/p&gt;
+&lt;p&gt;A tablet = memTable + a list of smallTables + log&lt;/p&gt;
+&lt;h3 id=&quot;如何读数据&quot;&gt;&lt;a href=&quot;#如何读数据&quot; class=&quot;headerlink&quot; title=&quot;如何读数据&quot;&gt;&lt;/a&gt;如何读数据&lt;/h3&gt;&lt;p&gt;写策略造成：需要查找所有的小小表和memTable, 很慢&lt;/p&gt;
+&lt;p&gt;加速：+ index + bloomfilter&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;深入浅出BigTable&quot;&gt;&lt;a href=&quot;#深入浅出BigTable&quot; class=&quot;headerlink&quot; title=&quot;深入浅出BigTable&quot;&gt;&lt;/a&gt;深入浅出BigTable&lt;/h2&gt;&lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;p&gt;  NoSQL db&lt;/p&gt;
+&lt;p&gt;  使用&lt;k, v&gt;的物理结构存储超大表&lt;/p&gt;
+&lt;p&gt;  BigTable吃内存，GFS吃硬盘&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Bittiger" scheme="http://victoriahong.com/tags/Bittiger/"/>
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+      <category term="Structure" scheme="http://victoriahong.com/tags/Structure/"/>
+    
+      <category term="硅谷之路" scheme="http://victoriahong.com/tags/%E7%A1%85%E8%B0%B7%E4%B9%8B%E8%B7%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Bittiger 硅谷之路 9</title>
