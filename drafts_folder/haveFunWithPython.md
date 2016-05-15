@@ -64,3 +64,17 @@ Wish me good luck with python!
   把Unicode编码转化为“可变长编码”的UTF-8编码。UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。
 
   在最新的Python 3版本中，字符串是以Unicode编码的，也就是说，Python的字符串支持多语言。
+
+- 由于Python的字符串类型是str，在内存中以Unicode表示，一个字符对应若干个字节。如果要在网络上传输，或者保存到磁盘上，就需要把str变为以字节为单位的bytes。
+
+  `'abc'` 是str，`b'abc'`内容一样，但是每个字符只占用一个字节。
+
+  `>>> 'abc'.encode('ascii')` --> `>>> b'abc'`
+
+  `>>> '中文'.encode('utf-8')` --> `>>> b'\xe4\xb8\xad\xe6\x96\x87'` 中文编码成ascii会报错，因为范围不够。
+
+  反向是`decode()`。
+
+  len(str)是求字符数。 len(b'str')是求字节数。
+
+- `# -*- coding: utf-8 -*-` 按照UTF-8编码读取源代码，否则源代码中的中文输出可能会有乱码。
