@@ -3,6 +3,7 @@ Victoria's Blog
 
 My blog contains tech articles, leisure journals and so on.
 
+Most of my articles are notes for online courses.
 
 Website: [VictoriaHong.com](http://VictoriaHong.com)
 
