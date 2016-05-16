@@ -91,3 +91,5 @@ Wish me good luck with python!
   `%%`转义成`%`。
 
   `>>> 'Age: %s. Gender: %s' % (25, True)` --> `>>> 'Age: 25. Gender: True'`
+
+- 取出array最后一个元素，`a[-1]`
