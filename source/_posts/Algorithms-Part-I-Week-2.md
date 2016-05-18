@@ -164,3 +164,9 @@ When order doesn't matter, we use **Bag API**. Bag implements iterable interface
 List collection implements iterable interface. But it is too broad.
 
 Dijkstra's **[two-stack algorithm](http://algs4.cs.princeton.edu/13stacks/Evaluate.java.html)** to evaluate n arithmetic expression. Value stack and Operator stack. Omit '(' but pop when ')'.
+
+### Sorting introduction
+
+Basic idea: callback = reference to executable code
+
+Method: implements Comparable interface. Write compareTo method.
