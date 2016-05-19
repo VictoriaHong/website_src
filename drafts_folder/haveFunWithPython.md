@@ -93,3 +93,59 @@ Wish me good luck with python!
   `>>> 'Age: %s. Gender: %s' % (25, True)` --> `>>> 'Age: 25. Gender: True'`
 
 - 取出array最后一个元素，`a[-1]`
+
+### List and tuple
+
+- list can contain different types of items, even contains another list
+
+- .append()
+
+- .insert(index, item)
+
+- .pop(index)
+
+- tuple is immutable, means the reference can't change
+
+  `>>> classmates = ('Michael', 'Bob', 'Tracy')`
+
+  for tuple contains only one item 1,
+
+  `>>> nums(1,)`
+
+### dict
+
+需要占用大量的内存，内存浪费多。
+
+- define: d = {'Michael': 95, 'Bob': 75, 'Tracy': 85}
+
+- add/update a pair: d['Adam'] = 67
+
+- delete: .pop(key)
+
+### set
+
+- `>>> s = set([1, 1, 2, 2, 3, 3])` --> `>>> s = {1,2,3}` filter
+
+- .add(key)
+
+- .remove(key)
+
+### Methods
+
+- abs()
+
+- max(1, 2, 3, 4)
+
+- int(), float(), str(), bool()
+
+- default value for method
+
+定义成这样 `def enroll(name, gender, age=6, city='Beijing'):`, 调用的时候`enroll('Sarah', 'F')`, 其他参数使用默认值。
+
+跳跃参数或者换顺序的话 `enroll('Adam', 'M', city='Tianjin')`
+
+默认参数必须指向不变对象！比如：None 代替 []
+
+- changeable parameters
+
+`def calc(*numbers):`, 调用的时候`calc(1, 2)`, 如果已经有了一个number list, `calc(*numbers)`就可以了。

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://victoriahong.com/"/>
-  <updated>2016-05-14T19:28:37.000Z</updated>
+  <updated>2016-05-17T05:16:27.000Z</updated>
   <id>http://victoriahong.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BuzzWord</title>
+    <link href="http://victoriahong.com/2016/05/BuzzWord/"/>
+    <id>http://victoriahong.com/2016/05/BuzzWord/</id>
+    <published>2016-05-17T05:07:50.000Z</published>
+    <updated>2016-05-17T05:16:27.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Tech-Words-You-Should-Know&quot;&gt;&lt;a href=&quot;#Tech-Words-You-Should-Know&quot; class=&quot;headerlink&quot; title=&quot;Tech Words You Should Know&quot;&gt;&lt;/a&gt;Tech Words You Should Know&lt;/h2&gt;&lt;p&gt;The goal is to remember what it is and why use it.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Storm-amp-Heron&quot;&gt;&lt;a href=&quot;#Storm-amp-Heron&quot; class=&quot;headerlink&quot; title=&quot;Storm &amp;amp; Heron&quot;&gt;&lt;/a&gt;Storm &amp;amp; Heron&lt;/h3&gt;&lt;p&gt;Twitter real-time big data processing.&lt;/p&gt;
+&lt;p&gt;Storm supports real-time processing at milliseconds level.&lt;/p&gt;
+&lt;p&gt;Heron provide better functionalities in workload deduction for ZooKeeper, resource isolation, configuration optimization, flow control.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Tech-Words-You-Should-Know&quot;&gt;&lt;a href=&quot;#Tech-Words-You-Should-Know&quot; class=&quot;headerlink&quot; title=&quot;Tech Words You Should Know&quot;&gt;&lt;/a&gt;Tech Words You Should Know&lt;/h2&gt;&lt;p&gt;The goal is to remember what it is and why use it.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tech Notes" scheme="http://victoriahong.com/categories/Tech-Notes/"/>
+    
+    
+      <category term="Bittiger" scheme="http://victoriahong.com/tags/Bittiger/"/>
+    
+      <category term="Notes" scheme="http://victoriahong.com/tags/Notes/"/>
+    
+  </entry>
   
   <entry>
     <title>Bittiger 硅谷之路 11</title>
@@ -694,7 +723,7 @@
     <link href="http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/"/>
     <id>http://victoriahong.com/2016/05/Algorithms-Part-I-Week-2/</id>
     <published>2016-05-07T06:35:09.000Z</published>
-    <updated>2016-05-07T06:38:49.000Z</updated>
+    <updated>2016-05-18T06:26:47.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Stacks-and-Queues-amp-Elementary-Sorts&quot;&gt;&lt;a href=&quot;#Stacks-and-Queues-amp-Elementary-Sorts&quot; class=&quot;headerlink&quot; title=&quot;Stacks and Queues &amp;amp; Elementary Sorts&quot;&gt;&lt;/a&gt;Stacks and Queues &amp;amp; Elementary Sorts&lt;/h2&gt;&lt;h3 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Modular programming style&lt;/li&gt;
@@ -787,6 +816,8 @@
 &lt;p&gt;When order doesn’t matter, we use &lt;strong&gt;Bag API&lt;/strong&gt;. Bag implements iterable interface. Method: add(), size(), iterator().&lt;/p&gt;
 &lt;h3 id=&quot;Stack-and-queue-applications&quot;&gt;&lt;a href=&quot;#Stack-and-queue-applications&quot; class=&quot;headerlink&quot; title=&quot;Stack and queue applications&quot;&gt;&lt;/a&gt;Stack and queue applications&lt;/h3&gt;&lt;p&gt;List collection implements iterable interface. But it is too broad.&lt;/p&gt;
 &lt;p&gt;Dijkstra’s &lt;strong&gt;&lt;a href=&quot;http://algs4.cs.princeton.edu/13stacks/Evaluate.java.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;two-stack algorithm&lt;/a&gt;&lt;/strong&gt; to evaluate n arithmetic expression. Value stack and Operator stack. Omit ‘(‘ but pop when ‘)’.&lt;/p&gt;
+&lt;h3 id=&quot;Sorting-introduction&quot;&gt;&lt;a href=&quot;#Sorting-introduction&quot; class=&quot;headerlink&quot; title=&quot;Sorting introduction&quot;&gt;&lt;/a&gt;Sorting introduction&lt;/h3&gt;&lt;p&gt;Basic idea: callback = reference to executable code&lt;/p&gt;
+&lt;p&gt;Method: implements Comparable interface. Write compareTo method.&lt;/p&gt;
 </content>
     
     <summary type="html">
